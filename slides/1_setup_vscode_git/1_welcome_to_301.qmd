@@ -113,6 +113,51 @@ editor: visual
 
 -   The class and assignments are just structured assuming that some of you will.
 
+## A Sneak Peek: The Mystery Script
+
+-   Imagine typing this prompt to an AI assistant:
+
+::: callout-note
+"Hey Claude — I have a .txt file of a novel. Can you write me a Python script that finds every instance of the word *bear*, tags whether it's being used as a noun or a verb, grabs 5 words of context on either side, and saves it all to a CSV? Also make me a bar chart of how often each part of speech shows up."
+:::
+
+-   Here's the script it might hand back:
+
+```python
+import spacy
+import pandas as pd
+import matplotlib.pyplot as plt
+
+nlp = spacy.load("en_core_web_sm")
+
+def find_word_contexts(filepath, target_word, window=5):
+    with open(filepath, "r", encoding="utf-8") as f:
+        text = f.read()
+    doc = nlp(text)
+    rows = []
+    for i, token in enumerate(doc):
+        if token.lemma_.lower() == target_word.lower() and not token.is_punct:
+            start = max(0, i - window)
+            end = min(len(doc), i + window + 1)
+            rows.append({"token": token.text, "pos": token.pos_, "context": doc[start:end].text})
+    return pd.DataFrame(rows)
+
+results = find_word_contexts("moby_dick.txt", "bear", window=5)
+results.to_csv("bear_contexts.csv", index=False)
+
+pos_counts = results["pos"].value_counts()
+pos_counts.plot(kind="bar", title="'bear' by Part of Speech")
+plt.tight_layout()
+plt.show()
+```
+
+## A Sneak Peek: The Mystery Script
+
+-   Right now, this probably looks like magic — or gibberish.
+-   That's the point. **Hold onto this.**
+-   By the end of the semester, you'll be able to read every line of this yourself — variables, functions, `pandas`, `spaCy`, visualization — and just as importantly, judge whether it's actually *correct*.
+-   We'll come back to this exact script in your last homework.
+
 ## Why do you need this course?
 
 1.  In Linguistics (academia and the private sector, like Google), working with large amounts of data is standard

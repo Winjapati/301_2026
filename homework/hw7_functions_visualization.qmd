@@ -1,0 +1,110 @@
+---
+title: "Homework 7: Functions & Visualization"
+subtitle: "LIN 301: Computation for Linguists"
+author: "Your Name"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    code-tools: true
+jupyter: python3
+fontsize: 12pt
+---
+
+<!-- PRELIMINARY / NEW: no dedicated homework existed for this material in the old files -- built from scratch based on 34.qmd (functions) and 35.qmd (visualization). Part 3 is the "reveal" of the mystery-script teaser from Day 1 (1_welcome_to_301.qmd) -- same script, same "bear" example (which also threads back to the word-sense activity in 32.qmd). Don't build Part 3 without keeping that Day 1 slide in sync if the script ever changes. -->
+
+# Overview
+
+**Goal:** Write your own reusable functions, use them to visualize a text, and then come back to the "mystery script" from the first day of class — this time, you'll actually be able to read it.
+
+**Deliverable:** one Quarto file, `hw7.qmd`.
+
+**Due:** November 16, 2026
+
+---
+
+# Part 1: Write a Reusable Function
+
+Write a function called `read_book(path)` that:
+
+- Opens a `.txt` file
+- Reads all lines
+- Strips whitespace and lowercases each line
+- Splits into words and returns a flat list of word tokens (no empty strings)
+
+```python
+def read_book(path):
+    with open(path, mode="r", encoding="utf-8") as book_file:
+        book_lines = book_file.readlines()
+    clean_lines = [line.strip().lower() for line in book_lines]
+    words = [word for line in clean_lines for word in line.split() if word]
+    return words
+```
+
+Test it on a text of your choice and print the first 20 words.
+
+# Part 2: Visualize It
+
+Using the `bar()`, `pie()`, `line()`, `scatter()`, and/or `wordcloud_plot()` functions from class (Day 35), produce **at least 3 different chart types** from your text. For each one, add a sentence explaining what it shows.
+
+# Part 3: The Reveal
+
+Back on Day 1, you saw this prompt:
+
+::: callout-note
+"Hey Claude — I have a .txt file of a novel. Can you write me a Python script that finds every instance of the word *bear*, tags whether it's being used as a noun or a verb, grabs 5 words of context on either side, and saves it all to a CSV? Also make me a bar chart of how often each part of speech shows up."
+:::
+
+...and this script:
+
+```python
+import spacy
+import pandas as pd
+import matplotlib.pyplot as plt
+
+nlp = spacy.load("en_core_web_sm")
+
+def find_word_contexts(filepath, target_word, window=5):
+    with open(filepath, "r", encoding="utf-8") as f:
+        text = f.read()
+    doc = nlp(text)
+    rows = []
+    for i, token in enumerate(doc):
+        if token.lemma_.lower() == target_word.lower() and not token.is_punct:
+            start = max(0, i - window)
+            end = min(len(doc), i + window + 1)
+            rows.append({"token": token.text, "pos": token.pos_, "context": doc[start:end].text})
+    return pd.DataFrame(rows)
+
+results = find_word_contexts("moby_dick.txt", "bear", window=5)
+results.to_csv("bear_contexts.csv", index=False)
+
+pos_counts = results["pos"].value_counts()
+pos_counts.plot(kind="bar", title="'bear' by Part of Speech")
+plt.tight_layout()
+plt.show()
+```
+
+## Your Task
+
+1. **Run it.** Download [moby_dick.txt from Project Gutenberg](https://www.gutenberg.org/ebooks/2701) and run the script as-is.
+2. **Annotate it.** In your own words, explain — line by line, or in logical chunks — what every part of this script is doing. You now know: functions, `spaCy` tokenization and POS tagging, `pandas` DataFrames, `.to_csv()`, and `matplotlib` bar charts.
+3. **Critique it.** Find at least **one thing you'd change or improve.** Some things to consider:
+   - Does `token.lemma_.lower() == target_word.lower()` actually catch every form of "bear" you'd expect (e.g. "bears", "bearing", "bore")? Check.
+   - Is a hard-coded window of 5 tokens always the right context size?
+   - What happens if `target_word` never appears in the file?
+   - Is there anything about the variable names, structure, or missing docstrings you'd clean up?
+4. **Improve it.** Make at least one concrete change to the script, and explain why.
+
+---
+
+# Reflection
+
+In 3–5 sentences: back on Day 1, this script was unreadable. What changed? And now that you can read AI-generated code, how does that change how you'd use a tool like this going forward — versus just copy-pasting and running it?
+
+---
+
+# Submission
+
+- Commit and push `hw7.qmd` to your `LIN_301` repo.
+- Post the repo link to Canvas.

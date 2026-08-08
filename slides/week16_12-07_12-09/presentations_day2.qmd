@@ -1,0 +1,29 @@
+---
+title: "Computation for Linguists"
+subtitle: "Final Presentations, Day 2"
+author: "Dr. Andrew M. Byrd"
+date: "December 9, 2026"
+format:
+  revealjs:
+    css: header_shrink.css
+    theme: beige
+    slide-number: true
+    center: true
+    toc: true
+    toc-title: "Plan for the Day"
+    toc-depth: 1
+editor: visual
+---
+
+<!-- PRELIMINARY / TODO: see presentations_day1.qmd note. Fill in remaining presenter order/time slots. -->
+
+# Logistics
+
+## Today's Schedule
+
+-   [ ] Fill in presenter order and time slots (continued from Day 1)
+
+## Wrap-Up
+
+-   [ ] Course evaluations, if not already done
+-   [ ] Any final remarks / next-steps for students

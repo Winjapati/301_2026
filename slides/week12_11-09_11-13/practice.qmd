@@ -1,0 +1,49 @@
+---
+date: "November 13, 2026"
+title: "practice"
+format: html
+---
+
+```{python}
+import urllib.request
+
+link = "https://hammondm.github.io/"
+f = urllib.request.urlopen(link)
+myfile = f.read()
+
+print(myfile.decode('UTF-8'))
+```
+
+```{python}
+def myfunction(word):
+	print(f'This is a {word}.')
+	print("That's all it does")
+	
+
+myfunction("burp")
+```
+
+```{python}
+import nltk
+from nltk.tokenize import word_tokenize, sent_tokenize
+text = "Dr. Byrd's students can't wait to analyze PIE roots!"
+word_tokenize(text)
+sent_tokenize(text)
+```
+
+```{python}
+import pandas as pd
+freq = nltk.FreqDist(word_tokenize(text.lower()))
+df = pd.DataFrame(freq.items(), columns=["word", "count"]).sort_values("count", ascending=False)
+df
+```
+
+```{python}
+import spacy
+nlp = spacy.load("en_core_web_sm")
+doc = nlp("The children ran quickly to their houses.")
+for token in doc:
+    print(token.text, token.lemma_, token.pos_)
+
+```
+

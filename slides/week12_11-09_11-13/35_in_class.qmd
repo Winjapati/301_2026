@@ -1,0 +1,353 @@
+---
+title: "35_in_class"
+format: html
+---
+
+
+
+
+## Activity
+
+```{python}
+# Let’s write a function together that inserts the infix “-izz-” immediately a vowel in the word, if that vowel is preceded by a consonant
+# andrew –> andrizzew
+# bob –> bizzob
+# kentucky –> kizzentizzucky
+
+def izz_infix(word):
+  
+  # define vowels
+  # if not for consonants
+  #for loop go through characters
+  # need to return affixed word
+  # logic function to locate only cases of consonants before vowels
+  # c[-1]
+  # index each c in word w/ index = 
+  
+  vowels = ["a", "e", "i", "o", "u"]
+  #consonants = []
+  
+  for c in word:
+    if word[0] in vowels:
+      pass
+    else:
+      print(c)
+    # 
+    # if c in vowels and :
+    #   
+    # else:
+    #   pass
+
+izz_infix("ello")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Activity: Together
+
+
+```{python}
+def snoop(word):
+  vowels = "aeiou"
+  
+  snooped = ""
+  # izz_bool = False
+  
+  for c in word:
+    if c == word[0]:
+      snooped += c
+    elif c not in vowels:
+      snooped += c
+    elif c in vowels:
+      snooped += "izz" + c
+      
+# Code modification for when you only want one -izz-
+    # elif c in vowels and izz_bool == False:
+    #   # print(f"{c} is a vowel.")
+    #   snooped += "izz" + c
+    #   izz_bool = True
+    # else:
+    #   snooped += c
+      
+  return(snooped)
+
+snoop("kentucky")
+```
+
+## Bar Charts
+
+```{python}
+from collections import Counter
+from read_bk_function import read_book
+alice = read_book("alice.txt")
+```
+
+
+## Bar Chart
+
+```{python}
+import matplotlib.pyplot as plt
+from collections import Counter
+
+def bar(tokens, k=10, title="Top Words (Bar Chart)"):
+    """
+    Draws a simple bar chart of the k most frequent tokens.
+    """
+    if not tokens:
+        print("No data.")
+        return
+    
+    c = Counter(tokens)
+    top_k = c.most_common(k)
+    words, freqs = zip(*top_k)
+    
+    plt.figure(figsize=(8, 4))
+    plt.bar(words, freqs)
+    plt.title(title)
+    plt.xlabel("Word")
+    plt.ylabel("Frequency")
+    plt.xticks(rotation=45, ha="right")
+    plt.tight_layout()
+    plt.show()
+
+bar(alice, k=10, title="Top Words in Alice")
+```
+
+
+## Pie Charts
+
+```{python}
+
+def pie(text, k=8, title="Character Shares (Pie Chart)", cmap_name="Set3", ignore_spaces=True):
+    """
+    Accepts either a string or a list of characters/words.
+    """
+    # If input is a list, join into one string
+    if isinstance(text, list):
+        text = " ".join(text)
+
+    if not text:
+        print("Empty text.")
+        return
+
+    if ignore_spaces:
+        text = text.replace(" ", "")
+
+    import matplotlib.pyplot as plt
+    from collections import Counter
+
+    c = Counter(text.lower())
+    top_k = c.most_common(k)
+    other_total = sum(v for _, v in list(c.items())[k:])
+
+    labels = [ch for ch, _ in top_k]
+    sizes = [v for _, v in top_k]
+    if other_total > 0:
+        labels.append("Other")
+        sizes.append(other_total)
+
+    cmap = plt.get_cmap(cmap_name)
+    colors = cmap(range(len(labels)))
+
+    plt.figure(figsize=(6, 6))
+    plt.pie(sizes, labels=labels, autopct="%1.1f%%", startangle=90, colors=colors)
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+```
+
+## Pie Charts
+
+```{python}
+pie(alice, k = 10)
+```
+
+## Line Charts
+
+```{python}
+import matplotlib.pyplot as plt
+from collections import Counter
+
+def line(tokens, title="Line Chart: Rank vs Frequency", logy=False, marker="o"):
+    """
+    Draws a line chart showing word frequency by rank.
+    - tokens: list of strings
+    - logy: if True, uses log scale for frequency (useful for Zipf's Law)
+    - marker: point style (e.g. 'o', '.', None)
+    """
+    if not tokens:
+        print("No data.")
+        return
+
+    c = Counter(tokens)
+    # Sort words by frequency
+    freqs = sorted(c.values(), reverse=True)
+    ranks = range(1, len(freqs) + 1)
+
+    plt.figure(figsize=(8, 4))
+    plt.plot(ranks, freqs, marker=marker)
+    plt.xlabel("Rank (1 = most frequent)")
+    plt.ylabel("Frequency")
+    if logy:
+        plt.yscale("log")
+        plt.ylabel("Frequency (log scale)")
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+```
+
+## Line Charts 
+```{python}
+# Regular scale
+line(alice, title="Rank vs Frequency (Regular)")
+```
+
+## Line Charts
+```{python}
+# Log scale (shows Zipf-like pattern clearly)
+line(alice, title="Rank vs Frequency (Log Scale)", logy=True)
+```
+
+## Scatter Plots
+
+- Great for comparing **two features** per item (e.g., frequency vs length)
+- Our function here compares word length vs. frequency
+
+```{python}
+import matplotlib.pyplot as plt
+from collections import Counter
+import pandas as pd
+
+def scatter(tokens, title="Scatter Plot: Length vs Frequency", logy=False):
+    """
+    Draws a scatter plot showing the relationship between word length and frequency.
+    - tokens: list of strings
+    - logy: if True, uses a log scale for the frequency axis
+    """
+    if not tokens:
+        print("No data.")
+        return
+
+    # Count how often each unique token appears
+    c = Counter(tokens)
+    df = pd.DataFrame({
+        "token": list(c.keys()),
+        "freq": list(c.values()),
+        "length": [len(t) for t in c.keys()]
+    })
+
+    plt.figure(figsize=(8, 4))
+    plt.scatter(df["length"], df["freq"])
+    plt.xlabel("Word Length (characters)")
+    plt.ylabel("Frequency")
+    if logy:
+        plt.yscale("log")
+        plt.ylabel("Frequency (log scale)")
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+
+    return df.sort_values("freq", ascending=False).reset_index(drop=True)
+```
+
+## Scatter Plots
+
+```{python}
+scatter(alice, title="Word Length vs Frequency (Normal Scale)")
+```
+
+## Scatter Plots
+
+```{python}
+# Same plot with log-scaled y-axis
+scatter(alice, title="Word Length vs Frequency (Log Scale)", logy=True)
+```
+## Word Clouds
+
+- Provides a nice visual to emphasize the most frequent tokens
+
+```{python}
+from collections import Counter
+import matplotlib.pyplot as plt
+
+# Make sure to install the package once:
+# pip install wordcloud
+
+from wordcloud import WordCloud
+
+def wordcloud_plot(tokens, title="Word Cloud", width=800, height=400, background_color="white"):
+    """
+    Draws a word cloud from a list of tokens.
+    - tokens: list of strings
+    - width, height: size of the generated image
+    - background_color: 'white', 'black', etc.
+    """
+    if not tokens:
+        print("No data.")
+        return
+
+    c = Counter(tokens)
+    freqs = dict(c)
+
+    wc = WordCloud(width=width, height=height, background_color=background_color)
+    wc = wc.generate_from_frequencies(freqs)
+
+    plt.figure(figsize=(10, 5))
+    plt.imshow(wc, interpolation="bilinear")
+    plt.axis("off")
+    plt.title(title)
+    plt.tight_layout()
+    plt.show()
+```
+
+## Word Clouds
+
+```{python}
+wordcloud_plot(alice, title="Alice Word Cloud")
+```
+
+# Final Activity
+
+## Final Activity
+
+- Load up a new book from the Gutenberg Project from past activities
+- Sketch out bar charts, pie charts, line charts, scatter plots, and word clouds using this data.
+
+```{python}
+usher = read_book("usher.txt")
+
+#bar chart
+bar(usher, k=10, title="Top Words in the Fall of the House of Usher")
+#pie chart
+pie(usher, k = 5)
+# Regular scale
+line(usher, title="Rank vs Frequency (Regular)")
+# Log scale (shows Zipf-like pattern clearly)
+line(usher, title="Rank vs Frequency (Log Scale)", logy=True)
+# Scatter plot
+scatter(usher, title="Word Length vs Frequency (Normal Scale)")
+# Same plot with log-scaled y-axis
+scatter(usher, title="Word Length vs Frequency (Log Scale)", logy=True)
+# Word Cloud
+wordcloud_plot(usher, title="Fall of the House of Usher Word Cloud")
+```
+
