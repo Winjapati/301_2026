@@ -113,40 +113,73 @@ editor: visual
 
 -   The class and assignments are just structured assuming that some of you will.
 
-## A Sneak Peek: The Mystery Script
+## A Sneak Peek: Real Research, Real AI Help
 
--   Imagine typing this prompt to an AI assistant:
+-   Imagine you're doing a research project and you ask an AI assistant:
 
 ::: callout-note
-"Hey Claude — I have a .txt file of a novel. Can you write me a Python script that finds every instance of the word *bear*, tags whether it's being used as a noun or a verb, grabs 5 words of context on either side, and saves it all to a CSV? Also make me a bar chart of how often each part of speech shows up."
+"I'm doing my final project on causative constructions ('make him leave,' 'have her call,' 'let them go') in child-directed vs. adult-directed speech. I have two folders of transcribed English text files — one CDS, one ADS. Can you help me figure out how to compare how often causatives show up in each?"
 :::
+
+## A Sneak Peek: Real Research, Real AI Help
+
+-   A good AI assistant doesn't just hand you code — it asks questions and explains tradeoffs first:
+
+::: callout-note
+Are you counting only lexical causatives (make/have/let/get + infinitive), or syntactic ones too? Are your corpora balanced in size, or will you need to normalize?
+
+I'd tokenize with spaCy, tag POS, define a trigger-verb list, and check for a base-form verb nearby. Then normalize counts per 1,000 words and compare with a bar chart.
+
+One real limitation: this heuristic will misfire sometimes — pull a sample of matches and hand-check them before you trust the numbers.
+:::
+
+## A Sneak Peek: The Mystery Script
 
 -   Here's the script it might hand back:
 
 ```python
+import os, glob
 import spacy
 import pandas as pd
 import matplotlib.pyplot as plt
 
 nlp = spacy.load("en_core_web_sm")
+CAUSATIVE_VERBS = {"make", "have", "let", "get"}
 
-def find_word_contexts(filepath, target_word, window=5):
-    with open(filepath, "r", encoding="utf-8") as f:
-        text = f.read()
-    doc = nlp(text)
-    rows = []
+def find_causatives(doc, window=4):
+    """Flags a causative trigger verb if a base-form verb ('VB')
+    shows up within `window` tokens afterward."""
+    matches = []
     for i, token in enumerate(doc):
-        if token.lemma_.lower() == target_word.lower() and not token.is_punct:
-            start = max(0, i - window)
-            end = min(len(doc), i + window + 1)
-            rows.append({"token": token.text, "pos": token.pos_, "context": doc[start:end].text})
-    return pd.DataFrame(rows)
+        if token.lemma_.lower() in CAUSATIVE_VERBS and token.pos_ == "VERB":
+            for wt in doc[i+1 : i+1+window]:
+                if wt.tag_ == "VB":
+                    matches.append({"trigger": token.lemma_.lower(), "complement": wt.text})
+                    break
+    return matches
 
-results = find_word_contexts("moby_dick.txt", "bear", window=5)
-results.to_csv("bear_contexts.csv", index=False)
+def analyze_corpus(folder_path):
+    counts = {v: 0 for v in CAUSATIVE_VERBS}
+    total_words = 0
+    for filepath in glob.glob(os.path.join(folder_path, "*.txt")):
+        with open(filepath, "r", encoding="utf-8") as f:
+            doc = nlp(f.read())
+        total_words += sum(1 for t in doc if t.is_alpha)
+        for match in find_causatives(doc):
+            counts[match["trigger"]] += 1
+    return counts, total_words
 
-pos_counts = results["pos"].value_counts()
-pos_counts.plot(kind="bar", title="'bear' by Part of Speech")
+def normalized_freq(counts, total_words, per=1000):
+    return {v: (c / total_words) * per if total_words else 0 for v, c in counts.items()}
+
+cds_counts, cds_total = analyze_corpus("child_directed_speech")
+ads_counts, ads_total = analyze_corpus("adult_directed_speech")
+
+df = pd.DataFrame({
+    "CDS (per 1k words)": normalized_freq(cds_counts, cds_total),
+    "ADS (per 1k words)": normalized_freq(ads_counts, ads_total),
+})
+df.plot(kind="bar", title="Causative Verb Frequency: CDS vs. ADS")
 plt.tight_layout()
 plt.show()
 ```
@@ -155,8 +188,8 @@ plt.show()
 
 -   Right now, this probably looks like magic — or gibberish.
 -   That's the point. **Hold onto this.**
--   By the end of the semester, you'll be able to read every line of this yourself — variables, functions, `pandas`, `spaCy`, visualization — and just as importantly, judge whether it's actually *correct*.
--   We'll come back to this exact script in your last homework.
+-   By the end of the semester, you'll be able to read every line of this yourself — functions, `spaCy`, `pandas`, visualization — and just as importantly, judge whether the *logic* is actually sound (spoiler: this heuristic has real limitations, and you'll be able to say exactly what they are).
+-   We'll come back to this exact exchange in your last homework.
 
 ## Why do you need this course?
 
@@ -350,9 +383,9 @@ plt.show()
 
 <ol style="font-size: 0.6em; line-height: 1.2;">
 
-<li>Command Line & File Structure</li>
+<li>IDE & Git</li>
 
-<li>Beginning Python</li>
+<li>Command Line & Beginning Python</li>
 
 <li>Loops & Conditionals</li>
 
