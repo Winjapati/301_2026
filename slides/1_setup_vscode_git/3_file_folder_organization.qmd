@@ -1,0 +1,120 @@
+---
+title: "Computation for Linguists"
+subtitle: "How to Organize Files & Folders for Computation"
+author: "Dr. Andrew M. Byrd"
+date: "August 28, 2026"
+format:
+  revealjs:
+    css: header_shrink.css
+    theme: beige
+    slide-number: true
+    center: true
+    toc: true
+    toc-title: "Plan for the Day"
+    toc-depth: 1
+editor: visual
+---
+
+<!-- NOTE TO SELF: this is a conceptual/GUI day, on purpose -- terminal commands (mkdir, mv, etc.) start next class. Use VSCode's Explorer panel (right-click -> New Folder) or Finder/File Explorer for the hands-on parts here, not the terminal. Bring a "messy folder" example/handout for the activity. -->
+
+# Review
+
+## Review from Day 2
+
+-   What we set up: VSCode, Git, GitHub, the course repo, your personal repo
+-   Quick check: can everyone open VSCode and see their `LIN_301` folder?
+
+# Why This Matters
+
+## A Preview of What's Coming
+
+-   In a few weeks: LaTeX documents need images, `.bib` files, and style files to be in the *right* place, or they won't compile
+-   Soon after: Python scripts need to find data files, or they'll throw an error
+-   Git tracks the exact structure of your project, folder by folder
+-   A messy project = hours of your life spent hunting for files instead of doing linguistics
+
+## The Bad Old Way
+
+-   `final_paper_v2_ACTUALFINAL_reallyfinal.docx`, living somewhere in Downloads
+-   `Screenshot 2026-08-28 at 3.42.17 PM.png`
+-   Everything just dumped on the Desktop
+-   Sound familiar?
+
+# Principles of Good File Organization
+
+## Naming Conventions: No Spaces
+
+-   `my data.csv` → the command line and Python may choke on this
+-   `my_data.csv` or `my-data.csv` → safe everywhere
+-   We'll see exactly why next class, but get in the habit now
+
+## Naming Conventions: Case & Clarity
+
+-   Prefer lowercase — avoids Mac vs. Windows vs. Linux case-sensitivity headaches
+-   Be descriptive, not generic:
+    -   ~~`data1.csv`~~ → `jfk_speech_tokens.csv`
+    -   ~~`hw.qmd`~~ → `hw3_beginning_python.qmd`
+-   Use ISO dates (`YYYY-MM-DD`) if a filename needs one — they sort correctly
+
+## Version Numbers vs. Git
+
+-   Old habit: `paper_v1.docx`, `paper_v2.docx`, `paper_FINAL.docx`, `paper_FINAL_v2.docx`
+-   New habit: **one file**, `paper.qmd` — and let **Git** track every version for you
+-   This is exactly what you set up yesterday. You don't need "v2" in a filename ever again.
+
+## Folder Hierarchy
+
+-   Don't dump every file into one giant folder
+-   Group by purpose:
+
+```
+LIN_301/
+├── homework/
+├── notes/
+├── data/
+└── README.md
+```
+
+-   Don't go too deep either — 2–3 levels is usually plenty. If you need a map to find a file, it's too deep.
+
+## README Files
+
+-   Every good project folder has a `README.md` at the top
+-   It answers: what is this project? how is it organized? how do I use it?
+-   You already have one — from yesterday's Git activity!
+
+# A Real Example
+
+## Look at the Course Repo
+
+-   Open the course repo you cloned yesterday in VSCode's Explorer panel
+-   As a class: why is it organized this way? What's in each folder? How would you find "today's slides" without me telling you?
+
+# Activity
+
+## Activity 1: Organize a Messy Project
+
+-   You'll get a folder of badly-named, unorganized files
+-   In pairs: rename the files following today's conventions, and sketch a folder structure for them
+-   Be ready to explain your choices to the class
+
+## Activity 2: Set Up Your Own Structure
+
+-   In your `LIN_301` repo, using VSCode's Explorer panel (right-click → **New Folder**), create:
+    -   `homework/`
+    -   `notes/`
+    -   `data/`
+-   We'll use this same structure for the rest of the semester — every homework goes in `homework/`, etc.
+-   Commit and push this change before you leave (practice from yesterday!)
+
+# Wrap-Up
+
+## Big Takeaways
+
+-   Good naming and structure isn't pedantic — it prevents real bugs later in the semester
+-   Consistency matters more than any single "correct" system
+-   Git + a clean structure means you can always find — and recover — your work
+
+## Next Time
+
+-   Learning the Command Line: navigating, creating, and moving files from the terminal

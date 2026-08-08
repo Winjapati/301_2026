@@ -1,0 +1,273 @@
+---
+title: "Computation for Linguists"
+subtitle: "Getting Set Up: VSCode + Git"
+author: "Dr. Andrew M. Byrd"
+date: "August 26, 2026"
+format:
+  revealjs:
+    css: header_shrink.css
+    theme: beige
+    slide-number: true
+    center: true
+    toc: true
+    toc-title: "Plan for the Day"
+    toc-depth: 1
+editor: visual
+---
+
+<!-- NOTE TO SELF: students installed VSCode + Git at home, and were sent basic instructions for the Git side (git config name/email, maybe SSH key). Today's class assumes that's mostly done and focuses on: confirming it worked, connecting everything to GitHub, and the actual workflow (edit -> commit -> push), plus cloning the shared course repo. Make this a workshop day for stragglers -- have TAs or early finishers help classmates who are stuck. -->
+
+
+# Review
+
+What did we do last time?
+
+## Review from Day 1
+
+-   Why this class starts with programming, not linguistics theory
+-   What you'll be able to do by December
+-   The "think like a computer" activity — being explicit, no assumed steps
+
+## Overview of Tech Today
+
+-   **VSCode** = our IDE for the course
+-   **Git** = version control — tracks changes to your files over time
+-   **GitHub** = where our repositories live online
+    -   backs up your files
+    -   how you'll access course materials
+    -   how you'll publish your final website (much later!)
+-   What does my setup look like?
+
+# Before Today
+
+## Reminder: You Should Have Already...
+
+-   Downloaded **VSCode**
+-   Downloaded **Git**
+-   Followed the at-home instructions to set your Git name & email
+
+If you haven't done this, raise your hand now — let's get you sorted before we move on.
+
+## Quick Troubleshooting Check
+
+-   Open VSCode
+-   Open the integrated terminal: **View → Terminal** (or `` Ctrl+` `` / `` Cmd+` ``)
+-   Type:
+
+``` bash
+git --version
+```
+
+-   You should see a version number. If not, raise your hand.
+
+# Setting Up VSCode
+
+## Install the Quarto Extension
+
+-   Click the Extensions icon (four squares, left sidebar) — or `Ctrl+Shift+X` / `Cmd+Shift+X`
+-   Search for **"Quarto"**
+-   Click **Install**
+
+## Install the Python Extension
+
+-   Same Extensions view
+-   Search for **"Python"** (the one published by Microsoft)
+-   Click **Install**
+
+## The VSCode Layout
+
+-   **Explorer** (left): your files and folders
+-   **Editor** (center): where you write/edit
+-   **Terminal** (bottom): where you'll run commands — same commands you'd use in Terminal (Mac) or Git Bash (Windows)
+-   **Source Control** (left sidebar, branch-looking icon): where Git lives
+
+## Opening and Rendering a `.qmd` File
+
+-   Open a folder in VSCode: **File → Open Folder**
+-   Click any `.qmd` file in the Explorer to open it
+-   Click **Render** at the top of the editor to preview it as a webpage/slideshow
+
+# Double-Checking Git
+
+## Step 1: Open the Integrated Terminal
+
+-   In VSCode: **View → Terminal**
+-   From now on, this is where all our `git` and command-line work happens — no need for a separate app
+
+## Step 2: Confirm Your Name & Email
+
+``` bash
+git config --list
+```
+
+-   You should see something like:
+
+``` bash
+user.name="Jane Doe"
+user.email=janedoe@email.com
+```
+
+-   If it's blank, set it now:
+
+``` bash
+git config --global user.name "Your Name"
+git config --global user.email "your_email@example.com"
+```
+
+## Step 3: Check for an SSH Key
+
+-   You may have made one at home. Check:
+
+``` bash
+ls ~/.ssh
+```
+
+-   Look for `id_ed25519` and `id_ed25519.pub`. If you see them, skip to "Add the Key to GitHub."
+
+## If You Don't Have One Yet
+
+``` bash
+ssh-keygen -t ed25519 -C "your_github_email@example.com"
+```
+
+-   Press **Enter** through the prompts (accept the default location, no passphrase is fine)
+
+``` bash
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519
+```
+
+## Copy Your Public Key
+
+-   Mac:
+
+``` bash
+pbcopy < ~/.ssh/id_ed25519.pub
+```
+
+-   Windows:
+
+``` bash
+clip < ~/.ssh/id_ed25519.pub
+```
+
+## Add the Key to GitHub
+
+-   Go to **github.com → Settings → SSH and GPG keys → New SSH key**
+-   Title: "My Laptop" (or something you'll recognize)
+-   Key type: Authentication
+-   Paste the key, click **Save**
+
+## Test the Connection
+
+``` bash
+ssh -T git@github.com
+```
+
+-   First time: type `yes` to trust GitHub
+-   Success looks like: "Hi *your-username*! You've successfully authenticated..."
+-   If you get an error, raise your hand — we'll fix it together.
+
+# Accessing the Course Repo
+
+## Where Course Files Live
+
+-   All of our slides, data, and activities live in a shared **course repository** on GitHub
+-   You'll **clone** it (make a local copy) so you always have the current files
+
+## Cloning the Course Repo
+
+-   In VSCode: open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
+-   Type **"Git: Clone"**, press Enter
+-   Paste the repo URL:
+
+```
+https://github.com/Winjapati/301_2026
+```
+
+-   Choose a folder to save it in, then click **Open** when prompted
+
+## Alternative: Do It in the Terminal
+
+``` bash
+git clone https://github.com/Winjapati/301_2026
+```
+
+## Getting Updates Throughout the Semester
+
+-   I'll add new files as we go
+-   To get them: open the **Source Control** panel → click **"..."** → **Pull**
+-   Or in the terminal:
+
+``` bash
+git pull
+```
+
+-   We'll do this at the start of most classes
+
+# Setting Up Your Own Repo
+
+## Create a Repository on GitHub
+
+-   Go to [github.com](https://github.com/) → **New repository**
+-   Name it `LIN_301` (or something similar)
+-   Choose **Public**
+-   Check the box to add a `README.md` file
+
+## Clone It Into VSCode
+
+-   Command Palette → **"Git: Clone"** → paste *your* repo's URL
+-   Choose a folder, open it when prompted
+
+# Testing the Whole Pipeline
+
+## Edit, Commit, Push
+
+1.  Open `README.md` in the editor, add a sentence, save (`Ctrl+S` / `Cmd+S`)
+2.  Click the **Source Control** icon (branch icon, left sidebar)
+3.  Hover over the changed file, click **+** to stage it
+4.  Type a commit message (e.g. "first commit")
+5.  Click the checkmark (✓) to commit
+
+::: callout-important
+## This Is Crucial!
+
+Committing only saves the change *locally*. You must also click **Sync Changes** (or **... → Push**) to actually send it to GitHub!
+:::
+
+## Verify It Worked
+
+-   Go to your repo on github.com
+-   Refresh the page
+-   You should see your edited `README.md` with your new sentence
+
+# Troubleshooting
+
+## If VSCode Asks for a Username/Password
+
+``` bash
+git remote -v   # you'll likely see https://github.com/...
+git remote set-url origin git@github.com:<YourUser>/<YourRepo>.git
+git remote -v   # now it should show git@github.com:...
+```
+
+-   Try pushing again
+
+## In Case of Emergency: Personal Access Token (PAT)
+
+-   **GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)**
+-   **Generate new token** → name it `laptop-vscode` → check the **repo** scope → **Generate**
+-   Copy it immediately — you won't see it again
+-   Use it as your password the next time VSCode prompts you
+
+# Wrap-Up
+
+## By the End of Today, You Should Be Able To...
+
+-   Open VSCode and use the integrated terminal
+-   Access the shared course repo, and pull new files as they're added
+-   Edit, commit, and push changes to your own repo
+
+## Next Time
+
+-   How to organize your files & folders like a computational linguist
