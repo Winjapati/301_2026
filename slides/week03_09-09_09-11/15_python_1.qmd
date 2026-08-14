@@ -102,6 +102,33 @@ When we write a Python program, we will:
         pip --version
         ```
 
+## Installing Packages with `pip`
+
+-   You just checked `pip --version`. `pip` is Python's **package installer** — it downloads and installs code that other people have written, so you don't have to write everything yourself.
+-   The command is always the same shape:
+
+``` bash
+pip install package_name
+```
+
+-   Try installing a small, harmless package now, just to see it work:
+
+``` bash
+pip install requests
+```
+
+## Installing Packages with `pip`
+
+-   You'll do this many times this semester — every time we start using a new tool (`pandas`, `spaCy`, and others), the first step will always be `pip install`.
+-   If `pip install` ever fails, the error message usually tells you *why* (wrong name, no internet connection, permissions issue) — read it before panicking.
+-   Once installed, a package works like this:
+
+``` python
+import requests
+```
+
+-   `import` loads a package's code into *this* Python session so you can use it.
+
 ## Running Your First Line of Code
 
 -   Now that you have verified that Python works in VSCode, return to the terminal

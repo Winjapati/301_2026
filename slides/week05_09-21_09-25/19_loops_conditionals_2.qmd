@@ -1,0 +1,317 @@
+---
+title: "Computation for Linguists"
+subtitle: "Beginning Python: For Loops"
+date: "September 23, 2026"
+author: "Dr. Andrew M. Byrd"
+format:
+  revealjs:
+    css: header_shrink.css
+    theme: beige
+    slide-number: true
+    center: true
+    toc: true
+    toc-title: "Plan for the Day"
+    toc-depth: 1
+editor: visual
+---
+
+<!-- Note: the final activity is not great.  Would help if list comprehensions were introduced today, so that students would know how to create one themselves. -->
+
+
+# Review
+
+-   What did you learn last time?
+
+## Recap from Last Time
+
+-   `if`
+-   `elif`
+-   `else`
+
+## Review Activity: Plural Generator
+
+-   Create a new `qmd`, create a new Python block
+-   Copy and paste the following code:
+
+``` python
+word = "bʌs"
+
+sibilants = ["s", "z", "ʃ", "ʒ", "tʃ", "dʒ"] 
+voiceless = ["p", "t", "k", "f", "θ"]
+```
+
+## Review Activity: Plural Generator
+
+-   Write a conditional (`if`, `elif`, `else`) that:
+    -   Checks whether the last character of `word` is in the list of `sibilants`
+    -   If yes, create a new variable `plural` by adding "ɪz" to the word
+    -   If no, check whether it's in the list of `voiceless`.
+        -   If yes, set `plural` to the word + "s"
+    -   Otherwise, set `plural` to the word + "z"
+-   Print the plural form.
+
+# For Loops
+
+## Back to Brontë
+
+``` python
+charlotte = ['The Professor', 'Jane Eyre', 'Shirley', 'Villette']
+```
+
+-   How would we print up each member of this list? We could:
+
+``` python
+print(charlotte[0])
+print(charlotte[1])
+print(charlotte[2])
+print(charlotte[3])
+```
+
+## Back to Brontë
+
+-   But what if we don't know how many novels there are?
+-   We could use `len()`, which tells us the length of a string, list, etc.
+-   Try it:
+
+``` python
+print(len(charlotte))
+```
+
+## Back to Brontë
+
+-   You might think that by knowing the `len()` of a list, and by creating a **counter**, we could get our script to print each book one by one...
+
+``` python
+char_index = 0
+if char_index < len(charlotte):
+    print(charlotte[char_index])
+    char_index += 1
+else:
+    ????
+```
+
+-   This won't work because `if` only runs once -- we have no way to **iterate** (to repeat the action over and over again)
+    -   We need another way to go about this.
+
+## `if` Statements vs. `for` Loops
+
+-   `if` statements are used to control which pieces of code are run, depending on certain conditions
+-   `for` loops are used to run the same block of code over and over again on items in an iterable.
+
+## Back to Brontë
+
+``` python
+for title in charlotte: 
+    print(title)
+```
+
+-   What is this code saying?
+
+## Back to Brontë
+
+``` python
+for book in charlotte: 
+    print(book)
+```
+
+-   `title`, `book` are temporary (loop) variables
+
+## Temporary Variables
+
+-   The very last value of the loop variable (`book`, `title`, etc.) persists after the loop is finished:
+
+``` python
+charlotte = ['The Professor', 'Jane Eyre', 'Shirley', 'Villette']
+for book in charlotte: 
+    print(book)
+print(book)
+```
+
+## `for` Loops
+
+![By Dr. Josef Fruehwald](for_loop.gif){fig-alt="Dr. Fruehwald's awesome gif about `for` loops" fig-align="center"}
+
+## Activity: `for` loops
+
+Below is a list of five important terms in Linguistics:
+
+``` python
+words = ["phoneme", "phrase", "morpheme", "reconstruction", "index"]
+```
+
+**Your task**: Write a `for` loop that prints out:
+
+1.  the word
+2.  the length (`len()`) of each word in the list
+
+Each printed statement should look like: "python has 6 letters."
+
+# Cleaning Text
+
+## Cleaning Text
+
+-   Let's now put our knowledge of conditionals and loops to work.
+-   This will help you as you work towards your final projects.
+-   We'll need to learn how to "clean" the data.
+
+## Verifying your Python directory
+
+-   First, check what directory you're in with `pwd` or run the following Python code:
+
+``` python
+import os
+print(os.getcwd())
+```
+
+-   This should tell you which directory you're in. You should be located in your LIN_301 directory, or whichever one this `qmd` doc is found in.
+-   If not, use `cd` to get to the right path.
+
+## Downloading Using Python
+
+-   Next, we're going to download a new book from Project Gutenberg.
+-   To do so, run the following code:
+
+``` python
+import urllib.request
+
+url = "https://www.gutenberg.org/files/141/141-0.txt"  # Mansfield Park
+filename = "mansfield_park.txt"
+
+urllib.request.urlretrieve(url, filename)
+
+print("Downloaded:", filename)
+```
+
+-   What does all of this say?
+
+## Opening up Files in Python
+
+-   Let's now open up our file using a `with open(...)` block
+
+``` python
+with open("mansfield_park.txt", "r", encoding="utf-8") as f:
+    book_text = f.read()
+```
+
+-   What happens if you just `print(book_text[:200])`?
+
+## Opening up Files in Python
+
+-   If we instead want to grab all of the lines separately, we can run:
+
+``` python
+with open("mansfield_park.txt", "r", encoding="utf-8") as f:
+    book_lines = f.readlines()
+
+len(book_lines)
+```
+
+-   Now we can grab individual lines from the book:
+
+``` python
+book_lines[101]
+```
+
+## Cleaning Up the Book
+
+-   Do you see how each line ends in `\n`? That's indicating a line break.
+
+``` bash
+'Such were its immediate effects, and within a twelvemonth a more\n'
+```
+
+-   Let's get rid of that character using the `.rstrip()` method.
+
+``` python
+one_line = book_lines[101]
+one_line.rstrip()
+```
+
+## Cleaning Up the Book
+
+-   Some lines also start with unnecessary whitespace.
+
+``` python
+two_line = book_lines[12]
+two_line
+```
+
+-   Let's get rid of that stuff, too, by tacking on the `.lstrip()` method.
+
+``` python
+two_line.rstrip().lstrip()
+```
+
+-   Or we can just use `.strip()`, which will handle both sides at once:
+
+``` python
+two_line.strip()
+```
+
+## Cleaning up the Book
+
+-   Sometimes, too, we want to convert everything to either uppercase or lowercase, so strings like `"The"` and `"the"` will count as the same word.
+-   Methods:
+    -   `lower()`
+    -   `upper()`
+
+``` python
+one_line.strip().lower()
+```
+
+## Activity:
+
+-   Using what you've learned above:
+    -   Load up "mansfield_park.txt"
+    -   Strip the whitespace on both sides and make all words in lower case, and save it as `mansfield_cleaned`. You'll need this **list comprehension**:
+
+``` python
+mansfield_cleaned = [line.strip().lower() for line in lines]
+```
+
+-   To make sure it worked, run:
+
+``` python
+print(mansfield_cleaned[0:19])
+```
+
+# Activity Answers
+
+## Plural Generator
+
+``` python
+word = "bʌs"
+
+sibilants = ["s", "z", "ʃ", "ʒ", "tʃ", "dʒ"] 
+voiceless = ["p", "t", "k", "f", "θ"]
+
+if word[-1] in sibilants:
+    plural = word + "ɪz" 
+elif word[-1] in voiceless:
+    plural = word + "s" 
+else: 
+    plural = word + "z"
+
+print("Plural: ", plural)
+```
+
+## `for` loop Activity
+
+``` python
+words = ["phoneme", "phrase", "morpheme", "reconstruction", "index"]
+for wd in words:
+    print(wd, " has ", len(wd), " letters.")
+```
+
+## Cleaning Mansfield
+
+``` python
+with open("mansfield_park.txt", "r", encoding="utf-8") as f:
+    lines = f.readlines()
+
+# Clean it: strip whitespace + lowercase
+[mansfield_cleaned = line.strip().lower() for line in lines]
+
+# Check the first 200 characters
+print(mansfield_cleaned[0:10])
+```

@@ -1,7 +1,7 @@
 ---
 title: "Computation for Linguists"
 subtitle: "LaTeX, Day 1 — Structure, Sections, Labels, TOC"
-date: "October 7, 2026"
+date: "October 5, 2026"
 author: "Dr. Andrew M. Byrd"
 format:
   revealjs:

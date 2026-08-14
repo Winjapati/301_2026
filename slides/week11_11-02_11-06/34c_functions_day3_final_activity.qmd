@@ -1,0 +1,78 @@
+---
+title: "Computation for Linguists"
+subtitle: "Writing Functions, Day 3 — Final Activity"
+date: "November 2, 2026"
+author: "Dr. Andrew M. Byrd"
+format:
+  revealjs:
+    css: header_shrink.css
+    theme: beige
+    slide-number: true
+    center: true
+    toc: true
+    toc-title: "Plan for the Day"
+    toc-depth: 1
+jupyter: python3
+editor: source
+
+# Final Activity
+
+## Final Activity: Review
+
+```python
+import spacy
+
+content_lemmas = [t.lemma_.lower() for t in doc
+                  if not (t.is_stop or t.is_punct or t.is_space or t.like_num)]
+```
+
+
+## Final Activity: Review
+
+```python
+import spacy
+from nltk.corpus import wordnet as wn
+from nltk.corpus.reader.wordnet import NOUN, VERB, ADJ, ADV
+
+# Load spaCy
+nlp = spacy.load("en_core_web_sm")
+
+# Sentence with both noun and verb "bear"
+text = "The bears bear their burdens bravely."
+doc = nlp(text)
+
+# Map spaCy POS tags to WordNet POS tags -- this is a **function**, we'll get to these soon
+def get_wordnet_pos(spacy_pos):
+    if spacy_pos.startswith("N"):
+        return NOUN
+    elif spacy_pos.startswith("V"):
+        return VERB
+    elif spacy_pos.startswith("J"):
+        return ADJ
+    elif spacy_pos.startswith("R"):
+        return ADV
+    return None
+
+# Loop through tokens and look up WordNet entries
+for token in doc:
+    wn_pos = get_wordnet_pos(token.tag_)
+    lemma = token.lemma_.lower()
+
+    if wn_pos and not token.is_stop and not token.is_punct:
+        synsets = wn.synsets(lemma, pos=wn_pos)
+        print(f"\n{token.text.upper()} ({token.pos_}) → lemma: {lemma}")
+        for s in synsets[:3]:  # show just the first 3 senses
+            print(f"  - {s.definition()}  [examples: {s.examples()}]")
+```
+
+
+## Final Activity
+
+- In this function (called `nlp_it`) we are going to:
+  - Take in a English string as an argument
+  - Process that string using nlp()
+  - Eliminate stopwords, punctuation, etc.
+  - Then process each lemma using WordNet, printing up the synset, definition, and examples
+  - Note: you will note need to `return()` anything here
+
+
