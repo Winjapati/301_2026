@@ -126,7 +126,7 @@ editor: visual
 -   A good AI assistant doesn't just hand you code — it asks questions and explains tradeoffs first:
 
 ::: callout-note
-Are you counting only lexical causatives (make/have/let/get + infinitive), or syntactic ones too? Are your corpora balanced in size, or will you need to normalize?
+Are you counting only syntactic causatives (make/have/let/get + infinitive), or lexical ones too (like *kill*, *drop*)? Are your corpora balanced in size, or will you need to normalize?
 
 I'd tokenize with spaCy, tag POS, define a trigger-verb list, and check for a base-form verb nearby. Then normalize counts per 1,000 words and compare with a bar chart.
 
@@ -137,7 +137,7 @@ One real limitation: this heuristic will misfire sometimes — pull a sample of 
 
 -   Here's the script it might hand back:
 
-```python
+``` python
 import os, glob
 import spacy
 import pandas as pd
@@ -186,10 +186,9 @@ plt.show()
 
 ## A Sneak Peek: The Mystery Script
 
--   Right now, this probably looks like magic — or gibberish.
--   That's the point. **Hold onto this.**
--   By the end of the semester, you'll be able to read every line of this yourself — functions, `spaCy`, `pandas`, visualization — and just as importantly, judge whether the *logic* is actually sound (spoiler: this heuristic has real limitations, and you'll be able to say exactly what they are).
--   We'll come back to this exact exchange in your last homework.
+-   Right now, this probably looks like magic — or gibberish!
+-   But... by the end of the semester, you'll be able to read every line of this yourself — functions, `spaCy`, `pandas`, visualization — and just as importantly, judge whether the *logic* is actually sound.
+-   We'll revisit this code towards the end of the course.
 
 ## Why do you need this course?
 
@@ -211,7 +210,7 @@ plt.show()
 
 -   How to think programmatically:
 
-    -   Python and a little R
+    -   Python
 
     -   How do linguists use computers to conduct research?
 
@@ -221,9 +220,25 @@ plt.show()
 
 -   How to put together a website
 
-    -   Learning the basics of HTML, to host your final project
+    -   Learning the basics of HTML, CSS, and JavaScript, to host your final project
 
 # What specific computational skills will you acquire?
+
+## **GIT SKILLS**
+
+-   Version control basics:
+
+    -   setting up a local Git repository and connecting it to GitHub
+
+    -   core commands: `clone`, `add`, `commit`, `push`, `pull`
+
+    -   pulling that day's class files before each session
+
+-   Using GitHub in this course:
+
+    -   submitting and accessing homework via the course repository
+
+    -   publishing your final project website with GitHub Pages
 
 ## **PYTHON SKILLS**
 
@@ -283,6 +298,10 @@ plt.show()
 
     -   word frequency analysis
 
+    -   WordNet for semantic relations
+
+    -   working with non-English text data
+
 ## **PYTHON SKILLS**
 
 -   Automation and reproducibility:
@@ -291,37 +310,9 @@ plt.show()
 
     -   using loops for batch processing
 
+    -   writing reusable functions for repeated tasks
+
     -   exporting processed results
-
-## **R SKILLS**
-
--   Data import and wrangling:
-
-    -   reading CSV/Excel
-
-    -   cleaning and transforming data
-
-    -   summarizing data by groups.
-
-## **R SKILLS**
-
--   Visualization:
-
-    -   frequency bar plots
-
-    -   histograms
-
-    -   scatterplots with ggplot2
-
-    -   customizing aesthetics
-
-    -   comparative plots
-
-    -   timelines
-
-    -   heatmaps
-
-    -   network diagrams
 
 ## **VSCode SKILLS**
 
@@ -331,15 +322,17 @@ plt.show()
 
     -   generating HTML/PDF slides and reports;
 
-    -   combining Python and R in the same document.
+    -   combining code, prose, and output in a single reproducible file.
 
-## **INTEGRATED PYTHON + R SKILLS**
+## **LaTeX SKILLS**
 
--   Passing cleaned Python-processed data into R for visualization.
+-   Structuring a document: sections, lists, formatting
 
--   Producing a complete workflow from raw corpus to cleaned dataset to statistical visualization.
+-   Typesetting linguistic content: IPA symbols, syntax trees, interlinear glosses (Leipzig Glossing Rules)
 
--   Documenting all steps so another linguist can replicate the analysis.
+-   Managing citations and bibliographies
+
+-   Compiling with Overleaf
 
 # What you'll need for this course
 
@@ -354,12 +347,6 @@ plt.show()
     -   IDE = "Integrated Development Enivornment", required tool for software development
 
     -   After we install it, run VSCode on your laptop each and every class
-
-    -   There are cloud-based environments for Python, R, and HTML. Possible sites include:
-
-        -   <https://trinket.io/>
-
-        -   <https://github.com/codespaces>.
 
 ## What you'll need for this course
 
@@ -377,37 +364,61 @@ plt.show()
 
 # Grades
 
-**In-Class Brain Dumps:** 30%
+**Classwork (based on attendance):** 25%
 
-**Homework:** 40% (8 total - 10% each)
-
-<ol style="font-size: 0.6em; line-height: 1.2;">
-
-<li>IDE & Git</li>
-
-<li>Command Line & Beginning Python</li>
-
-<li>Loops & Conditionals</li>
-
-<li>Pandas-monium</li>
-
-<li>LaTeX</li>
-
-<li>spaCy</li>
-
-<li>Functions & Visualization</li>
-
-<li>Your Website</li>
-
-</ol>
-
-**Final Project:** 30% (4 Components)
+**Homework:** 45% (9 total - 5% each)
 
 <ol style="font-size: 0.6em; line-height: 1.2;">
 
--   Select a dataset (corpus) in a language or languages of your choice and perform a linguistic analysis using the skills we build in class.
+<li>HW 1 – The Command Prompt</li>
+
+<li>HW 2 – Beginning Python</li>
+
+<li>HW 3 – Loops & Conditionals</li>
+
+<li>HW 4 – LaTeX</li>
+
+<li>HW 5 – Pandas-monium</li>
+
+<li>HW 6 – Functions</li>
+
+<li>HW 7 – Semantic Analysis</li>
+
+<li>HW 8 – LaTeX</li>
+
+<li>HW 9 – Building Your Website</li>
 
 </ol>
+
+## Grades
+
+**Final Project:** 30% (5 Components)
+
+<ol style="font-size: 0.6em; line-height: 1.2;">
+
+<li>Choose Dataset & Type of Analysis – 5%</li>
+
+<li>Cleaning & Processing of Data – 5%</li>
+
+<li>Preliminary Analysis – 5%</li>
+
+<li>Peer Feedback – 5%</li>
+
+<li>Final Presentation & Report – 10%</li>
+
+</ol>
+
+# Course Policies
+
+-   **Attendance:** tracked via the Canvas Attendance tool — you get **3 free absences**, no questions asked. Beyond that, additional absences may affect your Classwork grade unless excused.
+
+-   **Late work:** homework & project components lose **2% per day late** (capped at 20% off); still accepted for 80% credit after 10 days late.
+
+## Course Policies
+
+-   **AI Policy (the actual rules):** permitted for debugging error messages, explaining a concept, and assisting with your Final Project (Components 1–5) — **not** permitted for generating Homework 1–9 solutions from scratch. Any AI use must be cited (a quick note on where/how you used it).
+
+-   **Accommodations:** need support for a diagnosed disability or mental health condition? Reach out to the Disability Resource Center (DRC) any time.
 
 # Questions?
 
@@ -463,6 +474,28 @@ plt.show()
 
 -   If your instructions are too short and leave gaps, the "computer" (i.e., Dr. Byrd) will execute them in unexpected ways!
 
+# Before Next Time
+
+## Check Canvas Tonight
+
+-   I'm sending you a Canvas message with install instructions for **VSCode** and **Git**
+
+-   Follow it the same way we just talked about — explicitly, step by step, don't assume something happened if you didn't do it
+
+-   Should take about 15 minutes
+
+-   Stuck? Don't fight it for an hour — note where you got stuck and email me. We'll fix it together on Wednesday, which is a workshop day for exactly this.
+
 <!--# To change for next time:  pare down the list of skills learned in the class (some overlap, but also just too much for first day); activity was fantastic, one group combined the PB & J into a single squeeze packet, another just opened an uncrustable. This led to discussion about importing packages to save work/steps. -->
 
-<!--# 2026 restructure note: IDE swapped RStudio -> VSCode throughout. HW list reordered to match new unit sequence (command line -> python -> loops -> pandas -> LaTeX -> spaCy -> functions/viz -> website). "What will you learn" section reordered to lead with Python instead of LaTeX. Everything else left as-is per Andrew's request to revisit later in the redesign. -->
+<!--# 2026 restructure note: IDE swapped RStudio -> VSCode throughout. HW list reordered to match new unit sequence (command line -> python -> loops -> pandas -> LaTeX -> spaCy -> functions/viz -> website). "What will you learn" section reordered to lead with Python instead of LaTeX. -->
+
+<!--# 2026 revisit (skills content): R fully dropped -- course is Python-only now, viz moved to matplotlib in week 6 -- so cut both R SKILLS slides and the Python+R integration slide, removed R mentions from "what you'll learn" and VSCode skills. Added WordNet & non-English data to computational-linguistics skills list; expanded website bullet to HTML/CSS/JS to match week 15. This also addresses the "pare down skills, too much for first day" note above -- list is shorter now. -->
+
+<!--# 2026-08-19: added "Course Policies" section (attendance, late work, AI policy, DRC accommodations) pulled from the updated syllabus, before Questions? -->
+
+<!--# 2026-08-20: fixed causative terminology in AI-demo callout (make/have/let/get + infinitive = syntactic/periphrastic causatives, not lexical -- lexical causatives are single verbs like kill/drop). Added "writing reusable functions for repeated tasks" to the Automation and reproducibility bullets. Added a LaTeX SKILLS slide to match the Python/VSCode skills slides -- content pulled from the IPA/syntax trees/Leipzig glossing "annoying parts of linguistics" bullet earlier in the deck; review wording before this goes out. Removed the cloud-based IDE (trinket.io/GitHub Codespaces) bullet from the VSCode slide -- students should install VSCode locally ASAP instead. -->
+
+<!--# 2026-08-20 (2): rebuilt Grades slide to match syllabus_301.md, which had drifted -- swapped "In-Class Brain Dumps" (30%, no longer exists per syllabus) for "Classwork (based on attendance)" (25%); updated Homework from 8 items/40% (didn't even add up) to the syllabus's actual 9 assignments/45% (5% each), pulling titles from the Tentative Schedule table; filled in Final Project from 1 of 4 stated components to all 5 from the syllabus's Grade Breakdown table (5/5/5/5/10%), removing the old TODO. -->
+
+<!--# 2026-08-20 (3): added a GIT SKILLS slide (first in the "specific computational skills" section, ahead of Python, matching week-1 teaching order) -- covers local repo setup, core commands, pulling class files, and using GitHub for homework submission + GitHub Pages for the final website. -->

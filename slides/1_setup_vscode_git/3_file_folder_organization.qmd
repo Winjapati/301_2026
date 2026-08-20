@@ -15,21 +15,47 @@ format:
 editor: visual
 ---
 
-<!-- NOTE TO SELF: this is a conceptual/GUI day, on purpose -- terminal commands (mkdir, mv, etc.) start next class. Use VSCode's Explorer panel (right-click -> New Folder) or Finder/File Explorer for the hands-on parts here, not the terminal. Bring a "messy folder" example/handout for the activity. -->
-
 # Review
 
 ## Review from Day 2
 
 -   What we set up: VSCode, Git, GitHub, the course repo, your personal repo
--   Quick check: can everyone open VSCode and see their `LIN_301` folder?
+-   Yesterday was a workshop day — today, everyone does the *whole* loop again, solo, so it's a habit and not a fluke
 
-# Why This Matters
+## Review Activity: Run the Loop Yourself
+
+1.  Open your `computation_4_linguists` folder in VSCode
+2.  Pull the course repo (`301_2026`) — check for anything new since Wednesday
+3.  In your own repo (`LIN_301`), edit `README.md` again — add one sentence about something you learned on Day 2
+4.  Stage → commit → push
+5.  Check your repo on github.com — is your change there?
+
+# Make VSCode Yours
+
+## Activity: Customize Your Setup
+
+-   Open Settings: gear icon (bottom-left) → **Settings**, or `Ctrl+,` / `Cmd+,`
+-   Try at least two of the following:
+    -   **Color Theme** — `Ctrl+K Ctrl+T` / `Cmd+K Cmd+T`, browse and pick one
+    -   **Font Size** — search "font size" in Settings, adjust `Editor: Font Size`
+    -   **Auto Save** — File → Auto Save (turn it on — never lose work to a forgotten `Ctrl+S` again)
+    -   **Icon Theme** — Command Palette → "File Icon Theme," try a different set
+-   Bonus: browse the Extensions Marketplace for something fun (a theme pack, an icon pack) and install it
+    -   **"Material Icon Theme"** — a more detailed icon set for the Explorer
+    -   **"One Dark Pro"** — a popular color theme
+    -   **"vscode-pets"** — a small pet that lives in your editor (yes, really)
+
+## Why Bother?
+
+-   You'll live in this tool for the rest of the semester — a setup you like is a setup you'll actually use
+-   Also good practice using the Command Palette and Settings UI — you'll reach for both constantly
+
+# Why Good File Organization Matters
 
 ## A Preview of What's Coming
 
 -   In a few weeks: LaTeX documents need images, `.bib` files, and style files to be in the *right* place, or they won't compile
--   Soon after: Python scripts need to find data files, or they'll throw an error
+-   Even sooner: Python scripts need to find data files, or they'll throw an error
 -   Git tracks the exact structure of your project, folder by folder
 -   A messy project = hours of your life spent hunting for files instead of doing linguistics
 
@@ -67,7 +93,7 @@ editor: visual
 -   Don't dump every file into one giant folder
 -   Group by purpose:
 
-```
+```         
 LIN_301/
 ├── homework/
 ├── notes/
@@ -87,18 +113,14 @@ LIN_301/
 
 ## Look at the Course Repo
 
--   Open the course repo you cloned yesterday in VSCode's Explorer panel
--   As a class: why is it organized this way? What's in each folder? How would you find "today's slides" without me telling you?
+-   Open `301_2026/` (inside your `computation_4_linguists` folder) in VSCode's Explorer panel
+-   Two top-level folders so far: `slides/` and `homework/` — even this early, materials are split by type, not all dumped together
+-   Inside `slides/`, notice the naming pattern: numbered, in teaching order, short description
+-   As a class: why keep slides and homework separate instead of mixed together? If I keep naming folders this way, will you be able to find "today's slides" in Week 12 without me telling you?
 
 # Activity
 
-## Activity 1: Organize a Messy Project
-
--   You'll get a folder of badly-named, unorganized files
--   In pairs: rename the files following today's conventions, and sketch a folder structure for them
--   Be ready to explain your choices to the class
-
-## Activity 2: Set Up Your Own Structure
+## Activity 1: Set Up Your Own Structure
 
 -   In your `LIN_301` repo, using VSCode's Explorer panel (right-click → **New Folder**), create:
     -   `homework/`
@@ -106,6 +128,14 @@ LIN_301/
     -   `data/`
 -   We'll use this same structure for the rest of the semester — every homework goes in `homework/`, etc.
 -   Commit and push this change before you leave (practice from yesterday!)
+
+## Activity 2: Organize a Messy Project
+
+1.  Pull the course repo (`301_2026`) to get today's files
+2.  Find `activities/day3_messy_project/messy_downloads_dump/` in the Explorer
+3.  **Copy** that whole folder somewhere outside `computation_4_linguists` (e.g. your Desktop) — don't rename or move files inside the shared repo itself, or your next `git pull` will break
+4.  In pairs, on your copy: rename every file using today's conventions, create folders that make sense, and move files into them
+5.  Be ready to explain your choices to the class
 
 # Wrap-Up
 
@@ -118,3 +148,13 @@ LIN_301/
 ## Next Time
 
 -   Learning the Command Line: navigating, creating, and moving files from the terminal
+
+<!--# 2026-08-20: updated Day 2 callback to match the new shared-parent-folder setup (`computation_4_linguists` holding both `301_2026` and `LIN_301`) instead of a bare `LIN_301` folder -- see 2_vscode_git_setup.qmd for the underlying change. -->
+
+<!--# 2026-08-20 (2): Review section was too thin -- two bullets, no actual practice. Added a "Review Activity: Run the Loop Yourself" slide (pull course repo, edit+commit+push own repo, verify on GitHub) so everyone repeats the full Git/VSCode workflow solo before we move on to new material, since yesterday was workshop/catch-up day and not everyone necessarily got reps in. Added a "Still Stuck?" slide with common gotchas and a pair-up/TA prompt, matching yesterday's stragglers framing. Day still stays GUI-only (no terminal) per the note at the top. -->
+
+<!--# 2026-08-20 (3): corrected "Look at the Course Repo" -- initially assumed 301_2026 was nearly empty at this point and rewrote around that, but the actual repo already has slides/ and homework/ as separate top-level folders (checked github.com/Winjapati/301_2026). Rewrote again to use the real structure: the slides-vs-homework split plus the numbered naming inside slides/, with the discussion prompt asking why they're kept separate and whether the naming pattern holds up by Week 12. -->
+
+<!--# 2026-08-20 (4): added a "Make VSCode Yours" activity (color theme, font size, auto save, icon theme, optional extension) right after the Git/VSCode review activity -- gives students a low-stakes, fun task while reinforcing Settings UI and Command Palette use, which they'll need constantly. -->
+
+<!--# 2026-08-20 (5): switched Activity 2 (messy project) to distribute via repo sync instead of a Canvas zip -- rewrote as numbered steps since "sketch a folder structure" was too vague to actually run. Pointed at a new `activities/day3_messy_project/messy_downloads_dump/` path instead of `1_setup_vscode_git/1_welcome_to_301_files/` (that's Quarto's auto-generated render-support folder for the Day 1 slides, gets overwritten on re-render, wrong place for activity content). Also added an explicit "copy the folder out before editing" step -- students renaming/moving files inside their pulled 301_2026 clone would leave it locally modified and break their next `git pull`. Still need to actually add the `activities/` folder to the 301_2026 repo and push it -- see messy_downloads_dump handout generated this session. -->

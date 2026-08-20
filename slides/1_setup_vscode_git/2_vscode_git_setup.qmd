@@ -15,8 +15,7 @@ format:
 editor: visual
 ---
 
-<!-- NOTE TO SELF: students installed VSCode + Git at home, and were sent basic instructions for the Git side (git config name/email, maybe SSH key). Today's class assumes that's mostly done and focuses on: confirming it worked, connecting everything to GitHub, and the actual workflow (edit -> commit -> push), plus cloning the shared course repo. Make this a workshop day for stragglers -- have TAs or early finishers help classmates who are stuck. -->
-
+<!-- NOTE TO SELF: students installed VSCode + Git at home, and were sent basic instructions for the Git side (git config name/email, maybe SSH key). Today's class assumes that's mostly done and focuses on: confirming it worked, connecting everything to GitHub, and the actual workflow (edit -> commit -> push), plus cloning the shared course repo. Make this a workshop day for stragglers -->
 
 # Review
 
@@ -80,12 +79,6 @@ git --version
 -   **Editor** (center): where you write/edit
 -   **Terminal** (bottom): where you'll run commands — same commands you'd use in Terminal (Mac) or Git Bash (Windows)
 -   **Source Control** (left sidebar, branch-looking icon): where Git lives
-
-## Opening and Rendering a `.qmd` File
-
--   Open a folder in VSCode: **File → Open Folder**
--   Click any `.qmd` file in the Explorer to open it
--   Click **Render** at the top of the editor to preview it as a webpage/slideshow
 
 # Double-Checking Git
 
@@ -175,6 +168,12 @@ ssh -T git@github.com
 -   All of our slides, data, and activities live in a shared **course repository** on GitHub
 -   You'll **clone** it (make a local copy) so you always have the current files
 
+## Before You Clone: Make a Home for Your Class Files
+
+-   Somewhere sensible on your computer (e.g. inside Documents), create one new folder called `computation_4_linguists`
+-   This will hold **both** the course repo and your own repo, side by side — not buried in Downloads or scattered across your Desktop
+-   Everything below goes *inside* this folder
+
 ## Cloning the Course Repo
 
 -   In VSCode: open the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`)
@@ -185,17 +184,25 @@ ssh -T git@github.com
 https://github.com/Winjapati/301_2026
 ```
 
--   Choose a folder to save it in, then click **Open** when prompted
+-   When prompted for a location, choose your `computation_4_linguists` folder — VSCode will create a `301_2026` folder inside it, then click **Open** when prompted
 
 ## Alternative: Do It in the Terminal
 
 ``` bash
+cd computation_4_linguists
 git clone https://github.com/Winjapati/301_2026
 ```
 
+## Opening and Rendering a `.qmd` File
+
+-   In VSCode: **File → Open Folder**, choose your `computation_4_linguists` folder
+-   In the Explorer (left sidebar), open `301_2026/` and click any `.qmd` file to open it
+-   Click **Render** at the top of the editor to preview it as a webpage/slideshow
+-   If you see the file render, your clone worked! (You'll see your own repo show up next to `301_2026/` here shortly.)
+
 ## Getting Updates Throughout the Semester
 
--   I'll add new files as we go
+-   I'll be adding new files as we go
 -   To get them: open the **Source Control** panel → click **"..."** → **Pull**
 -   Or in the terminal:
 
@@ -217,7 +224,19 @@ git pull
 ## Clone It Into VSCode
 
 -   Command Palette → **"Git: Clone"** → paste *your* repo's URL
--   Choose a folder, open it when prompted
+-   When prompted for a location, choose the **same `computation_4_linguists` folder** you cloned the course repo into — not a new/different one
+-   Open it when prompted
+
+## One Folder, Both Repos
+
+```
+computation_4_linguists/
+├── 301_2026/      (shared course repo — pull for updates)
+└── LIN_301/       (your repo — where you push your work)
+```
+
+-   Open `computation_4_linguists` in VSCode (**File → Open Folder**) and you'll see both repos in the Explorer at once
+-   This is the folder you'll open every class from now on
 
 # Testing the Whole Pipeline
 
@@ -267,7 +286,10 @@ git remote -v   # now it should show git@github.com:...
 -   Open VSCode and use the integrated terminal
 -   Access the shared course repo, and pull new files as they're added
 -   Edit, commit, and push changes to your own repo
+-   Open one `computation_4_linguists` folder in VSCode and see both repos together
 
 ## Next Time
 
--   How to organize your files & folders like a computational linguist
+-   How to organize your files & folders in an efficient, effective way
+
+<!--# 2026-08-20: restructured cloning so both repos land in one shared parent folder (`computation_4_linguists`) instead of wherever VSCode happens to default to -- added a "make a home for your class files" step before cloning the course repo, pointed both clone destinations at the same parent folder, and added a "One Folder, Both Repos" slide showing the resulting tree. Moved "Opening and Rendering a .qmd File" earlier today (also 2026-08-20) from the VSCode-setup section down to right after cloning the course repo, since students had no .qmd file to open until then; updated its wording to reference computation_4_linguists/301_2026 instead of a bare 301_2026 folder. -->
