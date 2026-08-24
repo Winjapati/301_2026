@@ -13,4 +13,4 @@ git pull
 
 New content will show up as new folders under `slides/` and new files under `homework/`. Old weeks' folders stay in the repo once they're added, so you'll always have access to everything covered so far — you just won't see future weeks ahead of time.
 
-If you ever get a merge conflict or something looks broken after pulling, don't try to fix it yourself — come to office hours or post on Canvas.
+If you ever get a merge conflict or something looks broken after pulling, don't try to fix it yourself — come to office hours or send me an e-mail at andrewbyrd@uky.edu. 
