@@ -15,7 +15,7 @@ format:
 editor: visual
 ---
 
-# Pretest
+# Pretest: e-mail to andrewbyrd@uky.edu
 
 -   What is your background in computing?
 
@@ -25,11 +25,7 @@ editor: visual
 
 -   This will help me better understand how to structure the class.
 
-# What is this course?
-
-![](1_comp_ling_battle.png){fig-align="center" width="60%"}
-
-## In this class, I'm assuming that you ...
+# In this class, I'm assuming that you ...
 
 -   Know how to use a computer and can access the internet;
 
@@ -51,14 +47,6 @@ editor: visual
 
     -   Constructed Languages
 
-    -   Thinking about old problems in new ways
-
-        -   Syllable structure in PIE
-
-        -   Aspirates & Implosives
-
-        -   Immersive PIE
-
 ## My Background: I am NOT ...
 
 -   A formally trained computer scientist
@@ -77,9 +65,7 @@ editor: visual
 
     -   Have managed multiple groups of programmers on a variety of projects
 
--   All of this to pursue long-held dream to build a vast database, called "DERBi PIE": a Database of Etymological Roots Beginning in Proto-Indo-European
-
-## DERBi PIE
+## Major Computational Project: DERBi PIE
 
 ![](DERBiPIE.png){fig-align="center" width="100%"}
 
@@ -87,7 +73,7 @@ editor: visual
 
     -   Funding pulled with the DOGE-pocalypse in April 2025
 
-    -   What to do? Build the damn thing myself, with the help of Gen AI for high-level coding.
+    -   What to do? Build the damn thing myself (with a little help)!
 
 ## What does that mean for y'all?
 
@@ -110,7 +96,6 @@ editor: visual
 ## Does this mean you *have* to use AI?
 
 -   No. You can do all of the assignments and coursework without AI.
-
 -   The class and assignments are just structured assuming that some of you will.
 
 ## A Sneak Peek: Real Research, Real AI Help
@@ -196,65 +181,58 @@ plt.show()
 
     -   Programming provides us with tools to process that data!
 
+## Why do you need this course?
+
 2.  There are quite a few annoying parts of Linguistics that require special tools, think:
 
     -   IPA symbols
-
     -   Syntax Trees
-
     -   Leipzig Glossing Rules
+
+## Why do you need this course?
 
 3.  Understanding how to use Gen AI as a tool, not as a crutch
 
 ## What will you learn in this class?
 
 -   **Programmatic thinking** — Python, and how linguists use code for research
-
 -   **Reproducible writing** — LaTeX and Quarto instead of Word/Google Docs
-
 -   **The web** — enough HTML/CSS/JS to build and host your final project
 
-# What specific computational skills will you acquire?
+## Computational skills you'll build
+
+-   **Git & GitHub** — version control, submitting homework, publishing your site
+-   **Python** — programming basics, text/language data, `pandas`, NLP tools
+-   **Quarto** — code, prose, and output in one reproducible document
+-   **LaTeX** — typesetting linguistic content, compiled in Overleaf
 
 ## **GIT & GITHUB**
 
 -   Local repo → connected to GitHub
-
 -   Core commands: `clone`, `add`, `commit`, `push`, `pull`
-
 -   Pull class files before each session
-
 -   Submit homework and publish your final project site via GitHub Pages
 
 ## **PYTHON**
 
 -   Programming basics: scripts, variables, loops, functions, libraries
-
 -   Text & language data: string manipulation, tokenizing, regex, word counts
-
 -   Data handling with **pandas**: filtering, grouping, merging, descriptive stats
-
 -   Computational linguistics: NLTK/spaCy, lemmatization, POS tagging, WordNet
-
 -   Automation: batch-processing multiple files with reusable functions
 
 ## **QUARTO & LATEX**
 
 -   Quarto: write code and prose together, generate HTML/PDF reports and slides
-
 -   LaTeX: IPA symbols, syntax trees, interlinear glosses, citations
-
 -   Compiled in Overleaf
 
-# What you'll need for this course
+## What you'll need for this course
 
--   A **computer** (PC, Mac, or Linux) with internet access
-
+-   A laptop (PC, Mac, or Linux) with internet access
 -   [**VSCode**](https://code.visualstudio.com/download) — our IDE all semester
-
--   [**Overleaf**](https://www.overleaf.com/) — our LaTeX compiler, no local install needed
-
--   [**GitHub**](https://github.com/) — version control, and where you'll build your project website
+-   [**Overleaf**](https://www.overleaf.com/) — LaTeX, no local install needed
+-   [**GitHub**](https://github.com/) — for version control and your project site
 
 # Grades
 
@@ -353,25 +331,23 @@ plt.show()
 **Goal:** Write instructions that a computer could follow *without guessing* or filling in missing steps.
 
 1.  Form groups of three.
-
 2.  Your task: write step-by-step instructions for making a peanut butter & jelly sandwich for Dr. Byrd.
-
 3.  Be **explicit** — if a step isn't written, it doesn't happen.
-
 4.  Remember: A computer will follow your instructions **literally**.
+
+## Activity: Make Me a Sandwich!
 
 **Example of "not explicit enough":**
 
 > *"Put peanut butter on the bread."*
 
-A computer might set the unopened jar on top of the unopened bread bag — that step is technically done. What's missing: open the jar, pick up a knife, scoop *how much*, spread it *where*, on *which* slice. That's the level of detail we mean.
+A computer might set the unopened jar on top of the unopened bread bag — that step is technically done. What's missing: open the jar, pick up a knife, scoop *how much*, spread it *where*, on *which* slice.
 
 ## Activity: Make Me a Sandwich!
 
 **Challenge:**
 
 -   The group with the fewest steps *that still results in a correct sandwich* wins.
-
 -   If your instructions are too short and leave gaps, the "computer" (i.e., Dr. Byrd) will execute them in unexpected ways!
 
 # Before Next Time
@@ -382,22 +358,6 @@ A computer might set the unopened jar on top of the unopened bread bag — that 
 
 -   Follow it the same way we just talked about — explicitly, step by step, don't assume something happened if you didn't do it
 
--   Should take about 15 minutes
+-   Should take about 20-25 minutes
 
 -   Stuck? Don't fight it for an hour — note where you got stuck and email me. We'll fix it together on Wednesday, which is a workshop day for exactly this.
-
-<!--# To change for next time:  pare down the list of skills learned in the class (some overlap, but also just too much for first day); activity was fantastic, one group combined the PB & J into a single squeeze packet, another just opened an uncrustable. This led to discussion about importing packages to save work/steps. -->
-
-<!--# 2026 restructure note: IDE swapped RStudio -> VSCode throughout. HW list reordered to match new unit sequence (command line -> python -> loops -> pandas -> LaTeX -> spaCy -> functions/viz -> website). "What will you learn" section reordered to lead with Python instead of LaTeX. -->
-
-<!--# 2026 revisit (skills content): R fully dropped -- course is Python-only now, viz moved to matplotlib in week 6 -- so cut both R SKILLS slides and the Python+R integration slide, removed R mentions from "what you'll learn" and VSCode skills. Added WordNet & non-English data to computational-linguistics skills list; expanded website bullet to HTML/CSS/JS to match week 15. This also addresses the "pare down skills, too much for first day" note above -- list is shorter now. -->
-
-<!--# 2026-08-19: added "Course Policies" section (attendance, late work, AI policy, DRC accommodations) pulled from the updated syllabus, before Questions? -->
-
-<!--# 2026-08-20: fixed causative terminology in AI-demo callout (make/have/let/get + infinitive = syntactic/periphrastic causatives, not lexical -- lexical causatives are single verbs like kill/drop). Added "writing reusable functions for repeated tasks" to the Automation and reproducibility bullets. Added a LaTeX SKILLS slide to match the Python/VSCode skills slides -- content pulled from the IPA/syntax trees/Leipzig glossing "annoying parts of linguistics" bullet earlier in the deck; review wording before this goes out. Removed the cloud-based IDE (trinket.io/GitHub Codespaces) bullet from the VSCode slide -- students should install VSCode locally ASAP instead. -->
-
-<!--# 2026-08-20 (2): rebuilt Grades slide to match syllabus_301.md, which had drifted -- swapped "In-Class Brain Dumps" (30%, no longer exists per syllabus) for "Classwork (based on attendance)" (25%); updated Homework from 8 items/40% (didn't even add up) to the syllabus's actual 9 assignments/45% (5% each), pulling titles from the Tentative Schedule table; filled in Final Project from 1 of 4 stated components to all 5 from the syllabus's Grade Breakdown table (5/5/5/5/10%), removing the old TODO. -->
-
-<!--# 2026-08-20 (3): added a GIT SKILLS slide (first in the "specific computational skills" section, ahead of Python, matching week-1 teaching order) -- covers local repo setup, core commands, pulling class files, and using GitHub for homework submission + GitHub Pages for the final website. -->
-
-<!--# 2026-08-24 (post-day-1): finally acted on the 8/19 TODO above (pare down skills list) -- root cause turned out to be timing, not just wordiness: ran out of room for the sandwich activity this year (~6 min left vs. a full block last year). Collapsed the 5 PYTHON SKILLS slides into one, merged VSCode SKILLS + LaTeX SKILLS into one QUARTO & LATEX slide, and folded the 3 "What you'll need" slides into the section-header slide itself -- ~15 slides down to ~6 for this stretch. Also cut spoken-aside commentary that had crept onto the slides (Word/Docs rant, IDE definition, Overleaf endorsement) -- say those live instead. Separately: students this year were unclear on how explicit their sandwich instructions needed to be (didn't come up last year) -- likely because the time crunch meant fewer groups got to see live execution reveal the gaps themselves. Added a concrete "not explicit enough" example (jar-on-unopened-bag) to the first Make Me a Sandwich slide so the standard is set before groups start writing, independent of whether every group gets a live demo. -->
