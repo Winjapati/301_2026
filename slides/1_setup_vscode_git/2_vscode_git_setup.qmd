@@ -15,7 +15,7 @@ format:
 editor: visual
 ---
 
-<!-- NOTE TO SELF: students installed VSCode + Git at home, and were sent basic instructions for the Git side (git config name/email, maybe SSH key). Today's class assumes that's mostly done and focuses on: confirming it worked, connecting everything to GitHub, and the actual workflow (edit -> commit -> push), plus cloning the shared course repo. Make this a workshop day for stragglers -->
+<!-- NOTE TO SELF: students installed VSCode + Git at home, and were sent full instructions for the Git side (git config name/email, SSH key creation + GitHub connection test). Today's class assumes all of that is done and focuses on: confirming it worked, the actual workflow (edit -> commit -> push), and cloning the shared course repo. Make this a workshop day for stragglers -->
 
 # Review
 
@@ -44,6 +44,7 @@ What did we do last time?
 -   Downloaded **VSCode**
 -   Downloaded **Git**
 -   Followed the at-home instructions to set your Git name & email
+-   Created an SSH key and connected it to GitHub
 
 If you haven't done this, raise your hand now — let's get you sorted before we move on.
 
@@ -107,17 +108,28 @@ git config --global user.name "Your Name"
 git config --global user.email "your_email@example.com"
 ```
 
-## Step 3: Check for an SSH Key
+## Step 3: Confirm Your SSH Connection
 
--   You may have made one at home. Check:
+-   You should have already created an SSH key and added it to GitHub at home. Let's confirm it actually works:
+
+``` bash
+ssh -T git@github.com
+```
+
+-   First time: type `yes` to trust GitHub
+-   Success looks like: "Hi *your-username*! You've successfully authenticated..."
+-   If that worked, you're done here — skip ahead to "Accessing the Course Repo"
+
+## If That Didn't Work
+
+-   Check for a key:
 
 ``` bash
 ls ~/.ssh
 ```
 
--   Look for `id_ed25519` and `id_ed25519.pub`. If you see them, skip to "Add the Key to GitHub."
-
-## If You Don't Have One Yet
+-   Look for `id_ed25519` and `id_ed25519.pub`. If you see them, skip to "Add the Key to GitHub" below — the problem is on GitHub's end, not yours.
+-   If they're missing, generate one:
 
 ``` bash
 ssh-keygen -t ed25519 -C "your_github_email@example.com"
@@ -151,13 +163,12 @@ clip < ~/.ssh/id_ed25519.pub
 -   Key type: Authentication
 -   Paste the key, click **Save**
 
-## Test the Connection
+## Test the Connection Again
 
 ``` bash
 ssh -T git@github.com
 ```
 
--   First time: type `yes` to trust GitHub
 -   Success looks like: "Hi *your-username*! You've successfully authenticated..."
 -   If you get an error, raise your hand — we'll fix it together.
 
@@ -293,3 +304,5 @@ git remote -v   # now it should show git@github.com:...
 -   How to organize your files & folders in an efficient, effective way
 
 <!--# 2026-08-20: restructured cloning so both repos land in one shared parent folder (`computation_4_linguists`) instead of wherever VSCode happens to default to -- added a "make a home for your class files" step before cloning the course repo, pointed both clone destinations at the same parent folder, and added a "One Folder, Both Repos" slide showing the resulting tree. Moved "Opening and Rendering a .qmd File" earlier today (also 2026-08-20) from the VSCode-setup section down to right after cloning the course repo, since students had no .qmd file to open until then; updated its wording to reference computation_4_linguists/301_2026 instead of a bare 301_2026 folder. -->
+
+<!--# 2026-08-24: moved SSH key creation + GitHub connection test into the at-home instructions (day1_followup_setup_email_canvas.html) so it's done before Day 2, matching how git config name/email already works. Added it to the "Reminder: You Should Have Already..." slide. Reworked "Double-Checking Git" Step 3 to lead with `ssh -T git@github.com` as a verification check (same pattern as Step 2's git config check) instead of walking everyone through key generation from scratch; the generate/copy/add-to-GitHub flow is now an explicit "If That Didn't Work" fallback for stragglers, ending with a re-test. -->
