@@ -208,159 +208,53 @@ plt.show()
 
 ## What will you learn in this class?
 
--   How to think programmatically:
+-   **Programmatic thinking** — Python, and how linguists use code for research
 
-    -   Python
+-   **Reproducible writing** — LaTeX and Quarto instead of Word/Google Docs
 
-    -   How do linguists use computers to conduct research?
-
--   How to compile documents in LaTeX
-
-    -   Word and Google docs are not great for many reasons. Let me show you a better way.
-
--   How to put together a website
-
-    -   Learning the basics of HTML, CSS, and JavaScript, to host your final project
+-   **The web** — enough HTML/CSS/JS to build and host your final project
 
 # What specific computational skills will you acquire?
 
-## **GIT SKILLS**
+## **GIT & GITHUB**
 
--   Version control basics:
+-   Local repo → connected to GitHub
 
-    -   setting up a local Git repository and connecting it to GitHub
+-   Core commands: `clone`, `add`, `commit`, `push`, `pull`
 
-    -   core commands: `clone`, `add`, `commit`, `push`, `pull`
+-   Pull class files before each session
 
-    -   pulling that day's class files before each session
+-   Submit homework and publish your final project site via GitHub Pages
 
--   Using GitHub in this course:
+## **PYTHON**
 
-    -   submitting and accessing homework via the course repository
+-   Programming basics: scripts, variables, loops, functions, libraries
 
-    -   publishing your final project website with GitHub Pages
+-   Text & language data: string manipulation, tokenizing, regex, word counts
 
-## **PYTHON SKILLS**
+-   Data handling with **pandas**: filtering, grouping, merging, descriptive stats
 
--   Basic programming concepts:
+-   Computational linguistics: NLTK/spaCy, lemmatization, POS tagging, WordNet
 
-    -   writing scripts
+-   Automation: batch-processing multiple files with reusable functions
 
-    -   variables
+## **QUARTO & LATEX**
 
-    -   data types
+-   Quarto: write code and prose together, generate HTML/PDF reports and slides
 
-    -   loops
+-   LaTeX: IPA symbols, syntax trees, interlinear glosses, citations
 
-    -   conditionals
-
-    -   functions
-
-    -   importing libraries
-
-## **PYTHON SKILLS**
-
--   Text and language data processing:
-
-    -   string manipulation
-
-    -   tokenizing text
-
-    -   finding patterns with regex
-
-    -   counting and sorting words
-
-## **PYTHON SKILLS**
-
--   Data handling with **pandas**:
-
-    -   reading/writing CSV/Excel
-
-    -   filtering
-
-    -   grouping
-
-    -   sorting
-
-    -   merging datasets
-
-    -   calculating descriptive stats
-
-## **PYTHON SKILLS**
-
--   Computational linguistics tools:
-
-    -   NLTK/spaCy for tokenization
-
-    -   lemmatization
-
-    -   POS tagging
-
-    -   word frequency analysis
-
-    -   WordNet for semantic relations
-
-    -   working with non-English text data
-
-## **PYTHON SKILLS**
-
--   Automation and reproducibility:
-
-    -   writing scripts to process multiple files
-
-    -   using loops for batch processing
-
-    -   writing reusable functions for repeated tasks
-
-    -   exporting processed results
-
-## **VSCode SKILLS**
-
--   Reproducible reporting in **VSCode**:
-
-    -   writing code and commentary in **Quarto** documents;
-
-    -   generating HTML/PDF slides and reports;
-
-    -   combining code, prose, and output in a single reproducible file.
-
-## **LaTeX SKILLS**
-
--   Structuring a document: sections, lists, formatting
-
--   Typesetting linguistic content: IPA symbols, syntax trees, interlinear glosses (Leipzig Glossing Rules)
-
--   Managing citations and bibliographies
-
--   Compiling with Overleaf
+-   Compiled in Overleaf
 
 # What you'll need for this course
 
--   A **computer**, preferably a laptop for in-class computation. OS can be PC, Mac or Linux.
+-   A **computer** (PC, Mac, or Linux) with internet access
 
--   Access to the Internet
+-   [**VSCode**](https://code.visualstudio.com/download) — our IDE all semester
 
-## What you'll need for this course
+-   [**Overleaf**](https://www.overleaf.com/) — our LaTeX compiler, no local install needed
 
--   Chosen IDE for class: [**VSCode**](https://code.visualstudio.com/download)
-
-    -   IDE = "Integrated Development Enivornment", required tool for software development
-
-    -   After we install it, run VSCode on your laptop each and every class
-
-## What you'll need for this course
-
--   LaTeX Compiler: [**Overleaf**](https://www.overleaf.com/)
-
-    -   You *can* use a local LaTeX compiler, but Overleaf makes packages ***much*** simpler. I've never looked back after I switched to it.
-
-## What you'll need for this course
-
--   Git Repository: [**GitHub**](https://github.com/)
-
-    -   With this you'll learn how to upload and manage your software
-
-    -   You'll also create a webpage to promote yourself and your work.
+-   [**GitHub**](https://github.com/) — version control, and where you'll build your project website
 
 # Grades
 
@@ -466,6 +360,12 @@ plt.show()
 
 4.  Remember: A computer will follow your instructions **literally**.
 
+**Example of "not explicit enough":**
+
+> *"Put peanut butter on the bread."*
+
+A computer might set the unopened jar on top of the unopened bread bag — that step is technically done. What's missing: open the jar, pick up a knife, scoop *how much*, spread it *where*, on *which* slice. That's the level of detail we mean.
+
 ## Activity: Make Me a Sandwich!
 
 **Challenge:**
@@ -499,3 +399,5 @@ plt.show()
 <!--# 2026-08-20 (2): rebuilt Grades slide to match syllabus_301.md, which had drifted -- swapped "In-Class Brain Dumps" (30%, no longer exists per syllabus) for "Classwork (based on attendance)" (25%); updated Homework from 8 items/40% (didn't even add up) to the syllabus's actual 9 assignments/45% (5% each), pulling titles from the Tentative Schedule table; filled in Final Project from 1 of 4 stated components to all 5 from the syllabus's Grade Breakdown table (5/5/5/5/10%), removing the old TODO. -->
 
 <!--# 2026-08-20 (3): added a GIT SKILLS slide (first in the "specific computational skills" section, ahead of Python, matching week-1 teaching order) -- covers local repo setup, core commands, pulling class files, and using GitHub for homework submission + GitHub Pages for the final website. -->
+
+<!--# 2026-08-24 (post-day-1): finally acted on the 8/19 TODO above (pare down skills list) -- root cause turned out to be timing, not just wordiness: ran out of room for the sandwich activity this year (~6 min left vs. a full block last year). Collapsed the 5 PYTHON SKILLS slides into one, merged VSCode SKILLS + LaTeX SKILLS into one QUARTO & LATEX slide, and folded the 3 "What you'll need" slides into the section-header slide itself -- ~15 slides down to ~6 for this stretch. Also cut spoken-aside commentary that had crept onto the slides (Word/Docs rant, IDE definition, Overleaf endorsement) -- say those live instead. Separately: students this year were unclear on how explicit their sandwich instructions needed to be (didn't come up last year) -- likely because the time crunch meant fewer groups got to see live execution reveal the gaps themselves. Added a concrete "not explicit enough" example (jar-on-unopened-bag) to the first Make Me a Sandwich slide so the standard is set before groups start writing, independent of whether every group gets a live demo. -->
