@@ -191,7 +191,7 @@ ssh -T git@github.com
 -   Type **"Git: Clone"**, press Enter
 -   Paste the repo URL:
 
-```
+```         
 https://github.com/Winjapati/301_2026
 ```
 
@@ -240,7 +240,7 @@ git pull
 
 ## One Folder, Both Repos
 
-```
+```         
 computation_4_linguists/
 ├── 301_2026/      (shared course repo — pull for updates)
 └── LIN_301/       (your repo — where you push your work)
