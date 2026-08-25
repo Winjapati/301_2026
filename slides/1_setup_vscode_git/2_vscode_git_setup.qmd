@@ -15,17 +15,11 @@ format:
 editor: visual
 ---
 
-<!-- NOTE TO SELF: students installed VSCode + Git at home, and were sent full instructions for the Git side (git config name/email, SSH key creation + GitHub connection test). Today's class assumes all of that is done and focuses on: confirming it worked, the actual workflow (edit -> commit -> push), and cloning the shared course repo. Make this a workshop day for stragglers -->
+<!-- NOTE TO SELF: students installed VSCode + Git at home, and were sent full instructions for the Git side (git config name/email, SSH key creation + GitHub connection test). Today's class assumes all of that is done and focuses on: confirming it worked, the actual workflow (edit -> commit -> push), and cloning the shared course repo. -->
 
 # Review
 
 What did we do last time?
-
-## Review from Day 1
-
--   Why this class starts with programming, not linguistics theory
--   What you'll be able to do by December
--   The "think like a computer" activity — being explicit, no assumed steps
 
 ## Overview of Tech Today
 
@@ -91,14 +85,15 @@ git --version
 ## Step 2: Confirm Your Name & Email
 
 ``` bash
-git config --list
+git config user.name
+git config user.email
 ```
 
 -   You should see something like:
 
 ``` bash
-user.name="Jane Doe"
-user.email=janedoe@email.com
+Jane Doe
+janedoe@email.com
 ```
 
 -   If it's blank, set it now:
@@ -156,6 +151,12 @@ pbcopy < ~/.ssh/id_ed25519.pub
 clip < ~/.ssh/id_ed25519.pub
 ```
 
+-   This might not work, if so:
+
+``` bash
+cat \~/.ssh/id_ed25519.pub \| clip
+```
+
 ## Add the Key to GitHub
 
 -   Go to **github.com → Settings → SSH and GPG keys → New SSH key**
@@ -208,7 +209,7 @@ git clone https://github.com/Winjapati/301_2026
 
 -   In VSCode: **File → Open Folder**, choose your `computation_4_linguists` folder
 -   In the Explorer (left sidebar), open `301_2026/` and click any `.qmd` file to open it
--   Click **Render** at the top of the editor to preview it as a webpage/slideshow
+-   Click **Preview** at the top of the editor to preview it as a webpage/slideshow
 -   If you see the file render, your clone worked! (You'll see your own repo show up next to `301_2026/` here shortly.)
 
 ## Getting Updates Throughout the Semester
@@ -271,6 +272,47 @@ Committing only saves the change *locally*. You must also click **Sync Changes**
 -   Refresh the page
 -   You should see your edited `README.md` with your new sentence
 
+# Activity
+
+## Activity 1: Add and Push a New File
+
+1.  In your `LIN_301` repo, create a new file called `day2_notes.md`
+2.  Describe what you've done so far in today's class in this file.
+3.  Save, then check **Source Control** — notice this file is marked differently than `README.md` was earlier (untracked, not modified)
+4.  Stage → commit → push, same as before
+
+## Activity 2: Make (and Fix) Your First Merge Conflict
+
+Goal: see a conflict happen on purpose, in a safe spot, before it happens to you by accident.
+
+1.  On github.com, open your `LIN_301` repo → click into `README.md` → click the pencil icon to edit
+2.  Edit the *same line* you edited earlier today, then commit the change directly on GitHub
+3.  Back in VSCode — **without pulling first** — edit that same line locally, but differently. Save, stage, commit.
+4.  Try to push. What happens?
+5.  Pull. VSCode will report a conflict — open the file and look for the conflict markers: `<<<<<<<`, `=======`, `>>>>>>>`
+6.  Decide what the line should actually say, edit the file to remove the markers and leave only the final version, then stage, commit, and push
+7.  Refresh github.com to confirm your resolved version made it up
+
+::: callout-important
+## If You Get Stuck
+
+Conflicts are the one Git moment that can feel scary the first time. Raise your hand — this is exactly the kind of thing we want to practice together, with a safety net, before it happens on a real assignment.
+:::
+
+# Wrap-Up
+
+## By the End of Today, You Should Be Able To...
+
+-   Open VSCode and use the integrated terminal
+-   Access the shared course repo, and pull new files as they're added
+-   Edit, commit, and push changes to your own repo
+-   Open your `computation_4_linguists` folder in VSCode and see both repos together
+-   Recognize a merge conflict and resolve one by hand
+
+## Next Time
+
+-   How to organize your files & folders in an efficient, effective way
+
 # Troubleshooting
 
 ## If VSCode Asks for a Username/Password
@@ -290,19 +332,3 @@ git remote -v   # now it should show git@github.com:...
 -   Copy it immediately — you won't see it again
 -   Use it as your password the next time VSCode prompts you
 
-# Wrap-Up
-
-## By the End of Today, You Should Be Able To...
-
--   Open VSCode and use the integrated terminal
--   Access the shared course repo, and pull new files as they're added
--   Edit, commit, and push changes to your own repo
--   Open one `computation_4_linguists` folder in VSCode and see both repos together
-
-## Next Time
-
--   How to organize your files & folders in an efficient, effective way
-
-<!--# 2026-08-20: restructured cloning so both repos land in one shared parent folder (`computation_4_linguists`) instead of wherever VSCode happens to default to -- added a "make a home for your class files" step before cloning the course repo, pointed both clone destinations at the same parent folder, and added a "One Folder, Both Repos" slide showing the resulting tree. Moved "Opening and Rendering a .qmd File" earlier today (also 2026-08-20) from the VSCode-setup section down to right after cloning the course repo, since students had no .qmd file to open until then; updated its wording to reference computation_4_linguists/301_2026 instead of a bare 301_2026 folder. -->
-
-<!--# 2026-08-24: moved SSH key creation + GitHub connection test into the at-home instructions (day1_followup_setup_email_canvas.html) so it's done before Day 2, matching how git config name/email already works. Added it to the "Reminder: You Should Have Already..." slide. Reworked "Double-Checking Git" Step 3 to lead with `ssh -T git@github.com` as a verification check (same pattern as Step 2's git config check) instead of walking everyone through key generation from scratch; the generate/copy/add-to-GitHub flow is now an explicit "If That Didn't Work" fallback for stragglers, ending with a re-test. -->
