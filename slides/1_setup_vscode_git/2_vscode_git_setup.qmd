@@ -239,88 +239,20 @@ git pull
 -   When prompted for a location, choose the **same `computation_4_linguists` folder** you cloned the course repo into — not a new/different one
 -   Open it when prompted
 
-## One Folder, Both Repos
+# Next Time
 
-```         
-computation_4_linguists/
-├── 301_2026/      (shared course repo — pull for updates)
-└── LIN_301/       (your repo — where you push your work)
-```
+## Picking Up From Here
 
--   Open `computation_4_linguists` in VSCode (**File → Open Folder**) and you'll see both repos in the Explorer at once
--   This is the folder you'll open every class from now on
-
-# Testing the Whole Pipeline
-
-## Edit, Commit, Push
-
-1.  Open `README.md` in the editor, add a sentence, save (`Ctrl+S` / `Cmd+S`)
-2.  Click the **Source Control** icon (branch icon, left sidebar)
-3.  Hover over the changed file, click **+** to stage it
-4.  Type a commit message (e.g. "first commit")
-5.  Click the checkmark (✓) to commit
-
-::: callout-important
-## This Is Crucial!
-
-Committing only saves the change *locally*. You must also click **Sync Changes** (or **... → Push**) to actually send it to GitHub!
-:::
-
-## Verify It Worked
-
--   Go to your repo on github.com
--   Refresh the page
--   You should see your edited `README.md` with your new sentence
-
-# Activity
-
-## Activity 1: Add and Push a New File
-
-1.  In your `LIN_301` repo, create a new file called `day2_notes.md`
-2.  Describe what you've done so far in today's class in this file.
-3.  Save, then check **Source Control** — notice this file is marked differently than `README.md` was earlier (untracked, not modified)
-4.  Stage → commit → push, same as before
-
-## Activity 2: Make (and Fix) Your First Merge Conflict
-
-Goal: see a conflict happen on purpose, in a safe spot, before it happens to you by accident.
-
-1.  On github.com, open your `LIN_301` repo → click into `README.md` → click the pencil icon to edit
-2.  Edit the *same line* you edited earlier today, then commit the change directly on GitHub
-3.  Back in VSCode — **without pulling first** — edit that same line locally, but differently. Save, stage, commit.
-4.  Try to push. What happens?
-5.  Pull. VSCode will report a conflict — open the file and look for the conflict markers: `<<<<<<<`, `=======`, `>>>>>>>`
-6.  Decide what the line should actually say, edit the file to remove the markers and leave only the final version, then stage, commit, and push
-7.  Refresh github.com to confirm your resolved version made it up
-
-::: callout-important
-## If You Get Stuck
-
-Conflicts are the one Git moment that can feel scary the first time. Raise your hand — this is exactly the kind of thing we want to practice together, with a safety net, before it happens on a real assignment.
-:::
-
-# Wrap-Up
-
-## By the End of Today, You Should Be Able To...
-
--   Open VSCode and use the integrated terminal
--   Access the shared course repo, and pull new files as they're added
--   Edit, commit, and push changes to your own repo
--   Open your `computation_4_linguists` folder in VSCode and see both repos together
--   Recognize a merge conflict and resolve one by hand
-
-## Next Time
-
--   How to organize your files & folders in an efficient, effective way
+-   Put both repos side by side in one `computation_4_linguists` folder
+-   Test the full edit → commit → push pipeline on your own repo
+-   Practice a merge conflict on purpose — safely, before it happens by accident
 
 # Troubleshooting
 
 ## If VSCode Asks for a Username/Password
 
 ``` bash
-git remote -v   # you'll likely see https://github.com/...
-git remote set-url origin git@github.com:<YourUser>/<YourRepo>.git
-git remote -v   # now it should show git@github.com:...
+git remote -v   # you'll likely see https://github.com/... git remote set-url origin git@github.com:<YourUser>/<YourRepo>.git git remote -v   # now it should show git@github.com:...
 ```
 
 -   Try pushing again
@@ -331,4 +263,3 @@ git remote -v   # now it should show git@github.com:...
 -   **Generate new token** → name it `laptop-vscode` → check the **repo** scope → **Generate**
 -   Copy it immediately — you won't see it again
 -   Use it as your password the next time VSCode prompts you
-
