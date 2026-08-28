@@ -145,9 +145,13 @@ cd "My Folder"        # if there are any spaces in your named folder
 ## Activity
 
 1.  Type `cd ~`, to bring you to your home directory
+
 2.  Using `pwd` and `ls` as your guide, navigate your way into your `LIN_301` folder
+
 3.  Once there, `cd classwork` — this is where we'll be doing our terminal work for the next three classes
+
 4.  Create a new folder called `4_terminal_files_directories` and `cd` into it — this is where all of today's work will live
+
 5.  Your `301_2026` folder is something you'll `git pull` again later this semester — if you type your own notes or answers directly into the copy that lives there, a future pull could create a merge conflict. So instead, copy today's slides into *this* folder and work from your own copy:
 
     ``` bash
