@@ -169,9 +169,9 @@ LIN_301/
 -   Git only tracks **files**, not empty folders — add a small `README.md` inside each one (a sentence on what goes there) so the folder actually has something to commit
 -   Copy today's slide file into `classwork/`, renaming it to mark the day:
     ``` bash
-    cp ~/301_2026/slides/1_setup_vscode_git/3_file_folder_organization.qmd ./classwork/day3_file_folder_organization.qmd
+    cp ../301_2026/slides/1_setup_vscode_git/3_file_folder_organization.qmd ./classwork/day3_file_folder_organization.qmd
     ```
-    Do this again after each class for the rest of the semester — `classwork/` becomes a running archive, named `dayN_topic.qmd`
+    (`301_2026` is a sibling of your `LIN_301` repo inside `computation_4_linguists/` — run this from a terminal opened inside your `LIN_301` folder.) Do this again after each class for the rest of the semester — `classwork/` becomes a running archive, named `dayN_topic.qmd`
 -   We'll use this same structure for the rest of the semester — every homework goes in `homework/`, etc.
 -   Commit and push this change — README files and today's copied slide included — before you leave (practice from today!)
 
