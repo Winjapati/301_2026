@@ -15,6 +15,18 @@ format:
 editor: visual
 ---
 
+# Setting up Each Day
+
+-   There are two repos in this class, `301_2026` (the shared course repo) and `LIN_301` (your personal repo)
+-   In order to edit each day's slides, you'll need to copy them from 301_2026 into your own
+-   You can do this manually, or run the following command in the terminal (from your `LIN_301` folder), using `bash`:
+
+``` bash
+cp ../301_2026/slides/2_command_prompt/4_terminal_files_directories.qmd ./classwork/4_terminal_files_directories.qmd
+```
+
+-   This will allow you to edit the slides in your own repo, without creating a merge conflict
+
 # Review
 
 ## Review: So far, you have learned about...
