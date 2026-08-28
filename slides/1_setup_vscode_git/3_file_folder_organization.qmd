@@ -137,7 +137,7 @@ Goal: see a conflict happen on purpose, in a safe spot, before it happens to you
 ```         
 LIN_301/
 ├── homework/
-├── notes/
+├── classwork/
 ├── data/
 └── README.md
 ```
@@ -164,7 +164,7 @@ LIN_301/
 
 -   In your `LIN_301` repo, using VSCode's Explorer panel (right-click → **New Folder**), create:
     -   `homework/`
-    -   `notes/`
+    -   `classwork/`
     -   `data/`
 -   Git only tracks **files**, not empty folders — add a small `README.md` inside each one (a sentence on what goes there) so the folder actually has something to commit
 -   We'll use this same structure for the rest of the semester — every homework goes in `homework/`, etc.
