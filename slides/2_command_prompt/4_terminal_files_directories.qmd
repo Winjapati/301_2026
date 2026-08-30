@@ -19,8 +19,9 @@ editor: visual
 
 ## Setting Up
 
--   There are two repos in this class, `301_2026` (the shared course repo) and `LIN_301` (your personal repo)
--   In order to edit each day's slides, you'll need to copy them from 301_2026 into your own
+-   In VSCode, `Open Folder': computation_4_linguists`
+-   There are two repos in this folder, `301_2026` (the shared course repo) and `LIN_301` (your personal repo)
+-   In order to edit each day's slides, you'll need to copy them from `301_2026` into your own
 
 ## Setting Up
 
@@ -34,7 +35,7 @@ cp ../301_2026/slides/2_command_prompt/4_terminal_files_directories.qmd ./classw
 
 # Review
 
-## Review: So far, you have learned about...
+## Review: So far, we have discussed...
 
 -   **File structure & dependencies**
 
@@ -161,11 +162,11 @@ cd "My Folder"        # if there are any spaces in your named folder
 
 ## Activity
 
-1. Type `cd ~`, to bring you to your home directory
+1.  Type `cd ~`, to bring you to your home directory
 
-2. Using `pwd` and `ls` as your guide, navigate your way into your `LIN_301` folder
+2.  Using `pwd` and `ls` as your guide, navigate your way into your `LIN_301` folder
 
-3. Once there, `cd classwork` — this is where we'll be doing our terminal work for the next three classes
+3.  Once there, `cd classwork` — this is where we'll be doing our terminal work for the next three classes
 
 # Making and Renaming Files & Folders
 

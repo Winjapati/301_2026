@@ -50,7 +50,9 @@ $ rm -r folder_1
 ## Review Activity: Pride & Prejudice
 
 -   Navigate to your `LIN_301/classwork` folder
+
 -   Create a new folder called `5_file_extensions_grep` and `cd` into it — this is where all of today's work will live
+
 -   Just like last class, copy today's slides into this folder from `301_2026` so you're working from your own copy, not the original:
 
     ``` bash
@@ -58,6 +60,7 @@ $ rm -r folder_1
     ```
 
 -   Using Terminal:
+
     -   create a folder `p_and_p`
     -   download *Pride and Prejudice* from the following address: <https://gutenberg.org/files/1342/1342-0.txt>
     -   call this file `p_and_p.txt`
