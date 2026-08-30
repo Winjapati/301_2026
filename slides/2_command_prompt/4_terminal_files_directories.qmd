@@ -17,8 +17,13 @@ editor: visual
 
 # Setting up Each Day
 
+## Setting Up
+
 -   There are two repos in this class, `301_2026` (the shared course repo) and `LIN_301` (your personal repo)
 -   In order to edit each day's slides, you'll need to copy them from 301_2026 into your own
+
+## Setting Up
+
 -   You can do this manually, or run the following command in the terminal (from your `LIN_301` folder), using `bash`:
 
 ``` bash
@@ -156,25 +161,17 @@ cd "My Folder"        # if there are any spaces in your named folder
 
 ## Activity
 
-1.  Type `cd ~`, to bring you to your home directory
+1. Type `cd ~`, to bring you to your home directory
 
-2.  Using `pwd` and `ls` as your guide, navigate your way into your `LIN_301` folder
+2. Using `pwd` and `ls` as your guide, navigate your way into your `LIN_301` folder
 
-3.  Once there, `cd classwork` — this is where we'll be doing our terminal work for the next three classes
-
-4.  Create a new folder called `4_terminal_files_directories` and `cd` into it — this is where all of today's work will live
-
-5.  Your `301_2026` folder is something you'll `git pull` again later this semester — if you type your own notes or answers directly into the copy that lives there, a future pull could create a merge conflict. So instead, copy today's slides into *this* folder and work from your own copy:
-
-    ``` bash
-    cp ~/301_2026/slides/2_command_prompt/4_terminal_files_directories.qmd .
-    ```
+3. Once there, `cd classwork` — this is where we'll be doing our terminal work for the next three classes
 
 # Making and Renaming Files & Folders
 
 ## `mkdir`
 
--   You should now be in your `LIN_301/classwork/4_terminal_files_directories` folder in the Terminal Prompt
+-   You should now be in your `LIN_301/classwork` folder in the Terminal Prompt
 -   Look in the Explorer panel (left sidebar) in VSCode, what do you see?
 -   Type the following code:
 
@@ -182,7 +179,7 @@ cd "My Folder"        # if there are any spaces in your named folder
 mkdir test_folder     # short for "make directory"
 ```
 
--   Now look in the right corner - did anything change?
+-   Now look at the Explorer panel - did anything change?
 
 ## `rmdir`
 
@@ -224,7 +221,7 @@ mv test_bolder test_folder    # how you rename in bash
 
 ## Activity
 
--   Within your `LIN_301/classwork/4_terminal_files_directories` folder:
+-   Within your `LIN_301/classwork` folder:
     -   Create a file called `activity.txt`
     -   Create the following folders: `folder_1` \> `folder_2` \> `folder_3`
     -   Move `activity.txt` inside `folder_3`
@@ -269,18 +266,16 @@ touch script.sh
 
 ``` bash
 cat > script.sh <<'EOF'      # write everything below into script.sh, until a line that's just EOF
-#!/bin/bash
-# tells the system to run this file with bash
-echo "This is my first script."                                # print a message
+#!/bin/bash                 # tells the system to run this file with bash
+echo "This is my first script."                     # print a message
 curl -o term_comm.txt https://winjapati.github.io/courses/301/term_comm.txt  # download the file
-mkdir folder_1                                                 # make a new folder
-mv term_comm.txt folder_1                                      # move it into folder_1
-echo term_comm.txt                                             # print the filename
+mkdir folder_1                                      # make a new folder
+mv term_comm.txt folder_1                           # move it into folder_1
+echo term_comm.txt                                  # print the filename
 EOF
 ```
 
--   Don't type `EOF` again afterward — it's already in the block above and closes things out on its own. (If you do type it again by accident, you'll just get `bash: EOF: command not found` — harmless, just hit enter and move on.)
--   Look inside `script.sh`, what did you do?
+-   Open your folder in VSCode and look inside `script.sh`, what did you do?
 
 ## OMG
 
@@ -314,8 +309,9 @@ less folder_1/term_comm.txt
 ## On Your Own
 
 -   Using only what you've learned today — `mkdir`, `rmdir`, `touch`, `mv`, `curl`, `rm -r`, and writing/sourcing a `.sh` script
--   Within your `LIN_301/classwork/4_terminal_files_directories` folder:
+-   Within your `LIN_301/classwork` folder:
     1.  Create a new folder called `day4_files`
-    2.  Move both `test_folder` and `folder_1` inside `day4_files`
-    3.  Download the Terminal command cheat sheet one more time (<https://winjapati.github.io/courses/301/term_comm.txt>), saving it as `cheatsheet.txt`, directly into `day4_files`
-    4.  Write and run a script called `check.sh` that lists everything inside `day4_files` when you `source` it
+    2.  Move today's slides inside `day4_files`
+    3.  Move both `test_folder` and `folder_1` inside `day4_files`
+    4.  Download the Terminal command cheat sheet one more time (<https://winjapati.github.io/courses/301/term_comm.txt>), saving it as `cheatsheet.txt`, directly into `day4_files`
+    5.  Write and run a script called `check.sh` that lists everything inside `day4_files` when you `source` it
