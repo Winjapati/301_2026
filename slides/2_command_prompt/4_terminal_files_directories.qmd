@@ -19,40 +19,28 @@ editor: visual
 
 ## Setting Up
 
--   In VSCode, `Open Folder': computation_4_linguists`
+-   In VSCode, `Open Folder: computation_4_linguists`
 -   There are two repos in this folder, `301_2026` (the shared course repo) and `LIN_301` (your personal repo)
 -   In order to edit each day's slides, you'll need to copy them from `301_2026` into your own
 
 ## Setting Up
 
--   You can do this manually, or run the following command in the terminal (from your `LIN_301` folder), using `bash`:
+-   You can do this manually, or run the following commands in the terminal, using `bash`. VSCode's integrated terminal opens in your `computation_4_linguists` folder, so `cd` into `LIN_301` first:
 
 ``` bash
+cd LIN_301
 cp ../301_2026/slides/2_command_prompt/4_terminal_files_directories.qmd ./classwork/4_terminal_files_directories.qmd
 ```
 
 -   This will allow you to edit the slides in your own repo, without creating a merge conflict
 
-# Review
+## Review Activity
 
-## Review: So far, we have discussed...
+-   Make sure that your `301_2026` repo is up-to-date
 
--   **File structure & dependencies**
+-   Copy the slides into your personal repo, `LIN_301`
 
-    -   Setting up VSCode and Git, and why your folders need to be organized consistently
-    -   How Git tracks every file in your repo — which only works if you know where things live
-
-## Review: So far, you have learned about...
-
--   **Commands as instructions**
-    -   Git commands (`git commit`, `git push`) are precise instructions with their own syntax
-    -   You've already run a few in the terminal without necessarily calling it that
-
-## Review: So far, you have learned about...
-
--   **Reproducibility & automation**
-    -   Git gives you a full history of every change — you can always get back to a working version
-    -   This week, the terminal will let you automate the same kind of repetitive file tasks
+# The Command Prompt
 
 ## This week:
 
@@ -69,7 +57,6 @@ cp ../301_2026/slides/2_command_prompt/4_terminal_files_directories.qmd ./classw
 -   It's important to understand how the basics work.
     -   Where do files live?
     -   How do we navigate between them?
--   And the above concepts - file structure & dependencies, commands, and reproducibility - will be present here, too.
 
 # Learning the Terminal
 
@@ -145,16 +132,18 @@ ls
 -   Find a directory (dir_name) within it, and type (replacing `dir_name` with the actual directory name):
 
 ``` bash
-cd dir_name        
+cd dir_name
 ```
 
 -   This should move you "up" into the directory. Verify this is the case with `ls`.
 
+-   Tip: you don't have to type the whole name — after typing the first few letters, press `Tab` to auto-complete it. If there's more than one match, press `Tab` twice to see all the options.
+
 ## Navigating the Terminal
 
 ``` bash
-cd projects           # into a folder
-cd ..                 # up one
+cd folder_name        # into a folder
+cd ..                 # up one level
 cd ~                  # to home
 cd ~/Desktop          # absolute path to Desktop\
 cd "My Folder"        # if there are any spaces in your named folder
@@ -224,8 +213,10 @@ mv test_bolder test_folder    # how you rename in bash
 
 -   Within your `LIN_301/classwork` folder:
     -   Create a file called `activity.txt`
-    -   Create the following folders: `folder_1` \> `folder_2` \> `folder_3`
-    -   Move `activity.txt` inside `folder_3`
+    -   Create the following nested folders: `day_4` \> `folder_1` \> `folder_2` \> `folder_3`
+    -   Move today's slide file (`4_terminal_files_directories.qmd`) into `day_4`
+    -   Move `activity.txt` into `folder_3`
+    -   `cd` into `day_4` — this is where the rest of today's work will live
 -   You can *only* use the integrated Terminal in VSCode!
     -   Use `pwd` and `ls` as your guide
 
@@ -310,9 +301,9 @@ less folder_1/term_comm.txt
 ## On Your Own
 
 -   Using only what you've learned today — `mkdir`, `rmdir`, `touch`, `mv`, `curl`, `rm -r`, and writing/sourcing a `.sh` script
--   Within your `LIN_301/classwork` folder:
+-   Within your `LIN_301/classwork/day_4` folder:
     1.  Create a new folder called `day4_files`
     2.  Move today's slides inside `day4_files`
-    3.  Move both `test_folder` and `folder_1` inside `day4_files`
+    3.  Move both `folder_1` and `test_folder` inside `day4_files` — `test_folder` is one level up, in `classwork/`, so you'll need `..` to reach it
     4.  Download the Terminal command cheat sheet one more time (<https://winjapati.github.io/courses/301/term_comm.txt>), saving it as `cheatsheet.txt`, directly into `day4_files`
     5.  Write and run a script called `check.sh` that lists everything inside `day4_files` when you `source` it
