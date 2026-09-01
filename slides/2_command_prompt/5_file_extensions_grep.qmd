@@ -1,6 +1,6 @@
 ---
 title: "Computation for Linguists"
-subtitle: "Learning the Command Line: File Extensions, Beginning Grep"
+subtitle: "Learning the Command Line: More Bash Commands; File Extensions"
 date: "September 2, 2026"
 author: "Dr. Andrew M. Byrd"
 format:
@@ -15,20 +15,25 @@ format:
 editor: visual
 ---
 
+# Schedule Modified
+
+## Command Prompt, Homework
+
+-   Let's look at Canvas
+
 # Review
 
 -   What did we learn last time about the Terminal?
 
 ## Review of Terminal Commands
 
--   `mkdir`
+-   `pwd`
 -   `ls`
--   `rmdir`, `rm`
+-   `mkdir`
+-   `rmdir`
 -   `touch`
 -   `curl -o file.txt`
 -   `cd`
--   `source script.sh`
--   `cat`, `less`
 
 ## Review Activity
 
@@ -36,7 +41,7 @@ Analyze the following block of code, and describe what happens in each line.
 
 ``` bash
 $ pwd
-~/LIN_301/classwork/4_terminal_files_directories
+~/LIN_301/classwork/day_4
 $ ls
 $ touch test.txt
 $ mkdir folder_1
@@ -47,24 +52,100 @@ $ cd ..
 $ rm -r folder_1
 ```
 
-## Review Activity: Pride & Prejudice
+## Setting Up for Today
 
--   Navigate to your `LIN_301/classwork` folder
-
--   Create a new folder called `5_file_extensions_grep` and `cd` into it — this is where all of today's work will live
-
--   Just like last class, copy today's slides into this folder from `301_2026` so you're working from your own copy, not the original:
+-   Using `bash` commands. VSCode's integrated terminal opens in your `computation_4_linguists` folder, so `cd` into `LIN_301` first:
 
     ``` bash
-    cp ~/301_2026/slides/2_command_prompt/5_file_extensions_grep.qmd .
+    cd LIN_301
+    mkdir -p classwork/day_5
+    cp ../301_2026/slides/2_command_prompt/5_file_extensions_grep.qmd classwork/day_5/
+    cd classwork/day_5
     ```
 
--   Using Terminal:
+-   Open the `.qmd` file in VSCode
 
-    -   create a folder `p_and_p`
-    -   download *Pride and Prejudice* from the following address: <https://gutenberg.org/files/1342/1342-0.txt>
-    -   call this file `p_and_p.txt`
-    -   move `p_and_p.txt` into the folder `p_and_p`
+## Activity
+
+-   Within your `LIN_301/classwork/day_5` folder:
+    -   Create a file called `activity.txt`
+    -   Create the following nested folders: `folder_1` \> `folder_2` \> `folder_3`
+    -   Move `activity.txt` into `folder_3`
+-   You can *only* use the integrated Terminal in VSCode!
+    -   Use `pwd` and `ls` as your guide
+
+# A Couple More Tricks
+
+## `rm -r`
+
+-   Let's learn one more bash command
+
+``` bash
+rm -r folder_1
+```
+
+-   What happens?
+
+## You bastard!
+
+-   Don't worry! Type the following code:
+
+``` bash
+touch script.sh 
+```
+
+## Bringing it Back
+
+-   Copy and paste this **whole block** (using right click) into the Terminal — it already ends with `EOF`, so one paste does the whole thing:
+
+``` bash
+cat > script.sh <<'EOF'      # write everything below into script.sh, until a line that's just EOF
+#!/bin/bash                 # tells the system to run this file with bash
+echo "This is my first script."                     # print a message
+curl -o term_comm.txt https://winjapati.github.io/courses/301/term_comm.txt  # download the file
+mkdir folder_1                                      # make a new folder
+echo term_comm.txt                                  # print the filename
+mv term_comm.txt folder_1                           # move it into folder_1
+EOF
+```
+
+-   Open your folder in VSCode and look inside `script.sh`, what did you do?
+
+## OMG
+
+-   Type:
+
+``` bash
+source script.sh
+```
+
+## `cat`
+
+-   You've now got `script.sh`, and (thanks to the script) `folder_1/term_comm.txt` — let's actually look inside them
+-   `cat` prints a file's entire contents to the screen at once — best for short files
+
+``` bash
+cat script.sh
+```
+
+## `less`
+
+-   For longer files, dumping everything with `cat` gets hard to read — `less` opens it as a scrollable page instead
+
+``` bash
+less folder_1/term_comm.txt
+```
+
+-   Use the up/down arrows to scroll, spacebar to jump down a page, and `q` to quit back to the prompt
+
+## On Your Own
+
+-   Using only the commands you know — `ls`, `mkdir`, `rmdir`, `touch`, `mv`, `curl`, `rm -r`, and writing/sourcing a `.sh` script
+-   Within your `LIN_301/classwork/day_5` folder:
+    1.  Create a new folder called `day5_files`
+    2.  Move today's slides inside `day5_files`
+    3.  Move `folder_1` inside `day5_files`
+    4.  Write and run a script called `check.sh` that lists everything inside `day5_files` when you `source` it
 
 # File Extensions
 
@@ -104,9 +185,6 @@ pandoc --version
 All of these can be easily converted, as they're all just text!
 
 ``` bash
-# create md file
-touch test.md
-
 # start with a md file
 echo "# Hello World" > test.md
 echo "This is *italic* and **bold**." >> test.md
@@ -196,103 +274,3 @@ ls -lh demo.* from_*.txt
 ```
 
 ## The Takeaway?
-
-# `wc`, `grep`, and piping
-
-## Pride & Prejudice
-
--   Earlier you:
-    -   Created a folder called `p_and_p`
-    -   Downloaded *Pride and Prejudice* from the following address: <https://gutenberg.org/files/1342/1342-0.txt>, naming the file `p_and_p.txt`
-    -   And moved `p_and_p.txt` into the folder `p_and_p`
--   Using `cd`, navigate to `LIN_301/classwork/5_file_extensions_grep/p_and_p` and using `ls` confirm that the file is there
-
-## Pride & Prejudice
-
--   Confirm that you indeed have *Pride and Prejudice* downloaded:
-
-``` bash
-less p_and_p.txt
-```
-
--   You can scroll `up` and `down` in the document using the up/down arrows
--   Hit `spacebar` to jump down a page
--   Press `q` to return to the command prompt
-
-## Let's Analyze this Thing
-
-In Terminal, type in the following code:
-
-``` bash
-wc p_and_p.txt
-```
-
--   What is this?
-    -   Lines, Words, Characters
-    -   How many of each?
-
-## `wc` Flags
-
--   Lines only:
-
-``` bash
-wc -l p_and_p.txt
-```
-
--   Words only:
-
-``` bash
-wc -w p_and_p.txt
-```
-
--   How about characters only?
-
-## `grep`
-
--   Super useful & common command used to search within documents
--   Here's how it works:
-
-``` bash
-grep "search_string" file_name.txt
-```
-
--   This code gives all of the lines where "search_string" is found in "file_name.txt"
-
-## `grep`
-
--   Using this syntax, search for all instances of "yes" in *Pride and Prejudice*
-
-``` bash
-grep "search_string" file_name.txt
-```
-
--   Look at the output in the Terminal -- do you notice anything funny?
-
-## Piping Commands together
-
--   So far we can:
-    -   count how many lines, words, and characters there are in a file
-    -   see which lines have instances of a specific **string** there are in a file
--   But what if we wanted to count how many lines have that specific string?
-    -   We use the **pipe** `|` (just above the enter key)
-
-## Piping Commands together
-
--   Type in this code:
-
-``` bash
-grep "yes" p_and_p.txt | wc
-```
-
--   This tells us the number of words, lines, and characters are *within* lines that contain "yes"
--   How could we narrow this to just tell us how many lines contain "yes"?
-
-# Activity: *Frankenstein*
-
-Using the Terminal:
-
--   Navigate back to your `5_file_extensions_grep` folder (e.g., `cd ~/LIN_301/classwork/5_file_extensions_grep`)
--   Create a new folder called `frank`
--   Download *Frankenstein* from https://www.gutenberg.org/cache/epub/84/pg84.txt
--   Name the file `frank.txt` and move it to the `frank` folder
--   Using `grep`, `wc`, and \|, count how many lines have the word `monster` in them
