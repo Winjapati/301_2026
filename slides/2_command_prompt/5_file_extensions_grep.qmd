@@ -160,6 +160,8 @@ When programming, there are lots of different file types:
 -   `xml` - an Extensible Markup Language file; used to store structured data
 -   `md` - a Markdown file (can be converted into `html`); simple way to format text, similar to html
 
+## File Extensions
+
 2)  files you run/execute:
 
 -   `tex` - a LaTeX file; compiled into `pdf`
@@ -169,9 +171,15 @@ When programming, there are lots of different file types:
 ## Installing `pandoc`
 
 -   `pandoc` is a free, open-source tool that converts between document formats — plain text, Markdown, HTML, Word, and more
+
+## Installing `pandoc`
+
 -   To install it:
     -   **Windows**: download the installer from <https://pandoc.org/installing.html>, run it, then close and reopen VSCode
     -   **Mac**: open Terminal and run `brew install pandoc` (requires [Homebrew](https://brew.sh)), or download the installer from the same page
+
+## Installing `pandoc`
+
 -   Confirm it worked:
 
 ``` bash
